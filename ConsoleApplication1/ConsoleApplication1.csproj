@@ -52,6 +52,7 @@
     <Compile Include="DataStructures\Matrices.cs" />
     <Compile Include="DataStructures\Maze.cs" />
     <Compile Include="DataStructures\MyHashTable.cs" />
+    <Compile Include="DataStructures\NQueens.cs" />
     <Compile Include="DataStructures\Queue.cs" />
     <Compile Include="DataStructures\SearchAndSort.cs" />
     <Compile Include="DataStructures\Stack.cs" />

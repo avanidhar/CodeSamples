@@ -44,6 +44,7 @@ namespace ConsoleApplication1
 			//BinaryTreeNode<int>.PostOrderIter(head);
 			//BinaryTreeNode<int>.InOrderIter(head);
 			//BinaryTreeNode<int>.PreOrderIter(head);
+			//BinaryTreeNode<int>.LevelOrderTraversal(head);
 			//Console.WriteLine(BinaryTreeNode<int>.IsBST(head));
 			//var x = BinaryTreeNode<int>.PostOrderTraverse(head, new List<int>());
 			////BinaryTreeNode<int>.InsertNode(head, 7);
@@ -110,16 +111,23 @@ namespace ConsoleApplication1
 			//simpleMaze.InputMaze = maze;
 			//simpleMaze.SolveMaze();
 
-			string s = "ABCABA";
-			string t = "ACEBA";
+			//string s = "ABCABA";
+			//string t = "ACEBA";
 
-			Console.WriteLine(Strings.LongestCommonSubsequence(s, t));
+			// Console.WriteLine(Strings.LongestCommonSubsequence(s, t));
+
+			// string input = "This is my simple string+_+#";
+			// Strings.PrintMaxFreqString(input);
 			//bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
 
-			//foreach (int val in sudokuMatrix) 
-			//{
-			//	Console.Write(val);
-			//}
+			//string pattern = "aaacaaaaac";
+			//int[] prefixMatch = Strings.ComputeKMPPrefix(pattern);
+
+			// Uses backtracking to place N Queens in an N*N chessboard
+			// in a non attacking position
+			NQueens queen = new NQueens();
+			queen.PlaceQueens(0);
+
 			Console.ReadKey(true);
 		}
 	

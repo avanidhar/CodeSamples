@@ -260,5 +260,28 @@ namespace ConsoleApplication1.DataStructures
 
 			Console.WriteLine(sb.ToString());
 		}
+
+		public static void LevelOrderTraversal(BinaryTreeNode<T> root) 
+		{
+			if (root == null) return;
+			StringBuilder sb = new StringBuilder();
+			Queue<BinaryTreeNode<T>> inputQueue = new Queue<BinaryTreeNode<T>>();
+			inputQueue.Enqueue(root);
+			while (inputQueue.Count != 0) 
+			{
+				BinaryTreeNode<T> current = inputQueue.Dequeue();
+				sb.Append(current.Data);
+				if (current.Left != null) 
+				{
+					inputQueue.Enqueue(current.Left);
+				}
+				if (current.Right != null) 
+				{
+					inputQueue.Enqueue(current.Right);
+				}
+			}
+
+			Console.WriteLine(sb.ToString());
+		}
 	}
 }

@@ -255,5 +255,62 @@ namespace ConsoleApplication1.DataStructures
 
 			return LCS[m, n];
 		}
+
+		public static int StringMatchKMP(string input, string pattern) 
+		{
+			return 0;
+		}
+
+		public static int[] ComputeKMPPrefix(string pattern) 
+		{
+			int[] prefixArray = new int[pattern.Length];
+			prefixArray[0] = 0;
+			int k = 0;
+			int i= 1;
+			while (i < pattern.Length) 
+			{
+				if (pattern[i] == pattern[k])
+				{
+					prefixArray[i] = ++k;
+				}
+				else 
+				{
+					prefixArray[i] = 0;
+				}
+				i++;
+			}
+
+			return prefixArray;
+		}
+
+		public static void PrintMaxFreqString(string input)
+		{
+			if (string.IsNullOrEmpty(input)) 
+			{
+				Console.Write("Empty string");
+			}
+
+			input = input.ToLowerInvariant();
+
+			int[] countArr = new int[26];
+			int max = int.MinValue;
+
+			foreach (char c in input) 
+			{
+				if (c >= 'a' && c <= 'z') 
+				{
+					countArr[c - 'a']++;
+					max = Math.Max(max, countArr[c - 'a']);
+				}
+			}
+
+			for (int i = 0; i < 26; i++) 
+			{
+				if (countArr[i] == max) 
+				{
+					Console.WriteLine(Convert.ToChar('a' + i));
+				}
+			}
+		}
 	}
 }
