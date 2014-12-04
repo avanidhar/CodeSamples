@@ -33,13 +33,21 @@ namespace ConsoleApplication1
 			//Console.WriteLine(BitManipulation.GetBit(5, 3));
 			//Console.WriteLine(4 ^ (~4));
 
-			//BinaryTreeNode<int> head = new BinaryTreeNode<int>(5);
-			//head.Left = new BinaryTreeNode<int>(4);
-			//head.Left.Left = new BinaryTreeNode<int>(1);
-			//head.Left.Right = new BinaryTreeNode<int>(2);
-			//head.Right = new BinaryTreeNode<int>(7);
-			//head.Right.Right = new BinaryTreeNode<int>(8);
-			//head.Right.Left = new BinaryTreeNode<int>(6);
+			BinaryTreeNode<int> head = new BinaryTreeNode<int>(5);
+			head.Left = new BinaryTreeNode<int>(4);
+			head.Left.Left = new BinaryTreeNode<int>(1);
+			head.Left.Right = new BinaryTreeNode<int>(2);
+			head.Right = new BinaryTreeNode<int>(7);
+			head.Right.Right = new BinaryTreeNode<int>(8);
+			head.Right.Left = new BinaryTreeNode<int>(6);
+
+			BinaryTreeNode<int> head2 = new BinaryTreeNode<int>(5);
+			head2.Left = new BinaryTreeNode<int>(4);
+			head2.Left.Left = new BinaryTreeNode<int>(1);
+			head2.Left.Right = new BinaryTreeNode<int>(2);
+			head2.Right = new BinaryTreeNode<int>(7);
+			head2.Right.Right = new BinaryTreeNode<int>(9);
+			head2.Right.Left = new BinaryTreeNode<int>(6);
 
 			//BinaryTreeNode<int>.PostOrderIter(head);
 			//BinaryTreeNode<int>.InOrderIter(head);
@@ -62,8 +70,9 @@ namespace ConsoleApplication1
 			//Strings.LongestIncreasingSubarray(b);
 			//SearchAndSort.MergeSort(b, 0, b.Length);
 			//int[] array = new int[] { 4,8,-3,-4,12,9,-10,-1,2,3,20,4,11,-10};
+			int[] array = new int[] { -2, -3, 4, -1, -2, 1, 5 };
 			// Console.Write(SearchAndSort.MaximumSum(array, 0, array.Count() -1));
-			//Console.Write(SearchAndSort.MaximumSum2(array));
+			Console.Write(Integers.MaximumSum2(array));
 			//StackStruct myStack = new StackStruct(1);
 			//myStack.Push(2);
 			//myStack.Push(3);
@@ -98,13 +107,13 @@ namespace ConsoleApplication1
 			//Matrices.PrintSpiral(array2D);
 
 			//int[] a1 = {1, 2};
-			//int[] a2 = { 3, 4, 5, 6, 7, 8};
+			//int[] a2 = { 3, 5,7,9,14,16, 18, 15, 12, 10};
 
 			//int max = Integers.MthLargest(a1, a2, 4);
 			// Strings.Result result = Strings.SolveMasterMind("RGYB", "GGBR");
 
 			//int[,] sudokuMatrix = new int[,] { { 0,0 , 3, 4 }, { 3, 4, 0, 0 }, { 0, 0, 4, 3 }, {0,3,2,0} };
-
+			//bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
 			// Uses backtracking to solve a maze.
 			//Maze simpleMaze = new Maze();
 			//int[,] maze = new int[,] { { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 1 }, { 0, 1, 1, 0, 1 }, { 0, 0, 1, 0, 1 }, { 0, 0, 0, 1, 1 } };
@@ -125,28 +134,25 @@ namespace ConsoleApplication1
 
 			// Uses backtracking to place N Queens in an N*N chessboard
 			// in a non attacking position
-			NQueens queen = new NQueens();
-			queen.PlaceQueens(0);
+			//NQueens queen = new NQueens();
+			//queen.PlaceQueens(0);
+
+			// Use Binary search to look for the max element in a sonusoidal array
+			//int monotonicHigh = SearchAndSort.LargestInMonotonicArray(a2, 0, a2.Length-1);
+			//Console.WriteLine("Monotonic high is : " + monotonicHigh);
+
+			// bool sameTree = BinaryTreeNode<int>.IsSameTree(head, head2);
+
+			// Use integer arithmatic to figure out if a number is a palindrome
+			//long n = 12321;
+			//bool isPalindrome = Integers.isPalindrome(n);
+
+			// Use binary search to figure out the square root of an integer
+			// int a = Integers.squareRoot(10);
 
 			Console.ReadKey(true);
 		}
 	
-		static void countChange(int pennies) 
-		{
-			int qrts = pennies / 25;
-			int change = pennies % 25;
-
-			int dimes = change / 10;
-			change = change % 10;
-
-			int nickels = change / 5;
-			change = change % 5;
-
-			int penniesRemain = change;
-
-			Console.WriteLine("Quarters : " + qrts +" Dimes : " + dimes + " Nickels : " + nickels + "Pennies : " + penniesRemain);
-		}
-
 		static void HashFun() 
 		{
 			List<string> first = new List<string>() { "america", "india", "japan", "pakistan"};

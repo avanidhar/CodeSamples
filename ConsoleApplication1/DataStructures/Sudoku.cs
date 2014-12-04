@@ -44,7 +44,7 @@ namespace ConsoleApplication1.DataStructures
 
 		private static bool IsSafe(int[,] grid, int row, int col, int num) 
 		{
-			return (!IsUsedInRow(grid, row, num) && (!IsUsedInColumn(grid, col, num)) && (!IsUsedInBox(grid, row - row % DIMENSION, col - col % DIMENSION, num))) ;
+			return (!IsUsedInRow(grid, row, num) && (!IsUsedInColumn(grid, col, num)) && (!IsUsedInBox(grid, (row+1) - (row-1) % DIMENSION, (col+1) - (col-1) % DIMENSION, num))) ;
 		}
 		private static Tuple<int, int> FindUnassignedLocation(int[,] grid)
 		{

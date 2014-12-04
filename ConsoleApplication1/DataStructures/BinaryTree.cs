@@ -283,5 +283,21 @@ namespace ConsoleApplication1.DataStructures
 
 			Console.WriteLine(sb.ToString());
 		}
+
+		public static bool IsSameTree(BinaryTreeNode<T> root1, BinaryTreeNode<T> root2) 
+		{
+			if (root1 == null && root2 == null) return true;
+
+			else if(root1!=null && root2!=null)
+			{
+				return ((root1.data.CompareTo(root2.data) == 0) &&
+					(IsSameTree(root1.Left, root2.Left)) &&
+					(IsSameTree(root1.Right, root2.Right)));
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 }

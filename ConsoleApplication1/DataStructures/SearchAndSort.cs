@@ -142,47 +142,5 @@ namespace ConsoleApplication1.DataStructures
 				}
 			}
 		}
-
-		/// <summary>
-		/// Method to find the largest contiguous sum in an array
-		/// </summary>
-		/// <param name="a"></param>
-		/// <param name="l"></param>
-		/// <param name="h"></param>
-		/// <returns></returns>
-		public static int MaximumSum(int[] a, int l, int h) 
-		{
-			if (l > h) return 0;
-			if (l == h) return a[l];
-			int sum;
-			int m = (l + h) / 2;
-			int lMax = sum = 0;
-			for (int i = m; i >= l; i--) 
-			{
-				sum += a[i];
-				lMax = Math.Max(lMax, sum);
-			}
-
-			int rMax = sum = 0;
-			for (int j = m + 1; j <= h; j++) 
-			{
-				sum += a[j];
-				rMax = Math.Max(rMax, sum);
-			}
-
-			return Math.Max(lMax + rMax, Math.Max(MaximumSum(a, l, m), MaximumSum(a, m + 1, h)));
-		}
-
-		public static int MaximumSum2(int[] a) 
-		{
-			int maxSoFar = 0, maxSum = 0;
-			for (int i = 0; i < a.Length; i++) 
-			{
-				maxSoFar = Math.Max(0, maxSoFar + a[i]);
-				maxSum = Math.Max(maxSum, maxSoFar);
-			}
-
-			return maxSum;
-		}
 	}
 }
