@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -311,6 +312,38 @@ namespace ConsoleApplication1.DataStructures
 					Console.WriteLine(Convert.ToChar('a' + i));
 				}
 			}
+		}
+
+		// Checks if a set of parentheses are valid ie each closing brace is preceded by an opening 
+		// brace in the right order
+		public static bool ParenMatching(string parenString) 
+		{
+			List<char> open = new List<char> {'{','(','[' };
+			List<char> close = new List<char> { '}', ')', ']' };
+			
+			Stack<char> parenStack = new Stack<char>();
+
+			for (int i = 0; i < parenString.Length; i++) 
+			{
+				if (open.Contains(parenString[i])) 
+				{
+					parenStack.Push(parenString[i]);
+				}
+				else if (close.Contains(parenString[i])) 
+				{
+					if (parenStack.Count == 0) 
+					{
+						return false;
+					}
+
+					if (parenStack.Pop() != open[close.IndexOf(parenString[i])]) 
+					{
+						return false;
+					}
+				}
+			}
+
+			return parenStack.Count == 0;
 		}
 	}
 }

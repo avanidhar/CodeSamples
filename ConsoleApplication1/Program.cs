@@ -70,9 +70,9 @@ namespace ConsoleApplication1
 			//Strings.LongestIncreasingSubarray(b);
 			//SearchAndSort.MergeSort(b, 0, b.Length);
 			//int[] array = new int[] { 4,8,-3,-4,12,9,-10,-1,2,3,20,4,11,-10};
-			int[] array = new int[] { -2, -3, 4, -1, -2, 1, 5 };
+			//int[] array = new int[] { -2, -3, 4, -1, -2, 1, 5 };
 			// Console.Write(SearchAndSort.MaximumSum(array, 0, array.Count() -1));
-			Console.Write(Integers.MaximumSum2(array));
+			//Console.Write(Integers.MaximumSum2(array));
 			//StackStruct myStack = new StackStruct(1);
 			//myStack.Push(2);
 			//myStack.Push(3);
@@ -150,6 +150,8 @@ namespace ConsoleApplication1
 			// Use binary search to figure out the square root of an integer
 			// int a = Integers.squareRoot(10);
 
+			string parens = "{[]}()";
+			bool isValidParen = Strings.ParenMatching(parens);
 			Console.ReadKey(true);
 		}
 	

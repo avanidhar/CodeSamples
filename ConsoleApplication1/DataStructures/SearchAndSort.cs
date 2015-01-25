@@ -142,5 +142,11 @@ namespace ConsoleApplication1.DataStructures
 				}
 			}
 		}
+
+		public static int MaxGap(int[] a) 
+		{
+			if (a.Length == 0) return 0;
+			return 0;
+		}
 	}
 }
