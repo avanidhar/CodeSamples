@@ -150,8 +150,10 @@ namespace ConsoleApplication1
 			// Use binary search to figure out the square root of an integer
 			// int a = Integers.squareRoot(10);
 
-			string parens = "{[]}()";
-			bool isValidParen = Strings.ParenMatching(parens);
+            //string parens = "{[]}()";
+            //bool isValidParen = Strings.ParenMatching(parens);
+
+            Strings.IntegerToColumnId(29);
 			Console.ReadKey(true);
 		}
 	

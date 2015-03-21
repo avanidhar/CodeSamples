@@ -19,6 +19,21 @@ namespace ConsoleApplication1.DataStructures
 			Console.WriteLine(result);
 		}
 
+        public static string IntegerToColumnId(int number)
+        {
+            StringBuilder sb = new StringBuilder();
+            while (number > 0) 
+            {
+                number--;
+                char c = (char)((number)%26 + 'A');
+                number = number / 26;
+                sb.Append(c);
+            }
+
+            char[] a = sb.ToString().ToCharArray();
+            Array.Reverse(a);
+            return new string(a);
+        }
 		public static Result SolveMasterMind(string guess, string solution) 
 		{
 			if (guess.Length != solution.Length) 
