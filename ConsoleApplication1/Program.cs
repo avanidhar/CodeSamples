@@ -153,27 +153,11 @@ namespace ConsoleApplication1
             //string parens = "{[]}()";
             //bool isValidParen = Strings.ParenMatching(parens);
 
-            Strings.IntegerToColumnId(29);
+            //Console.WriteLine(Strings.IntegerToColumnId(29));
+            Node l1 = Node.BuildSample();
+            Node l2 = Node.BuildSecondSample();
+            Node.AddTwoNumbers(l1, l2).PrintList();
 			Console.ReadKey(true);
-		}
-	
-		static void HashFun() 
-		{
-			List<string> first = new List<string>() { "america", "india", "japan", "pakistan"};
-			List<string> second = new List<string>() { "india", "pakistan", "china" };
-			Hashtable table = new Hashtable();
-			foreach(string country in first)
-			{
-				table.Add(country, true);		
-			}
-			foreach (string state in second) 
-			{
-				if (!table.ContainsKey(state)) 
-				{
-					Console.WriteLine("The first country not in the list is : " + state);
-					break;
-				}
-			}
 		}
 
 		public static string GetLongestPalindrome(string input) 
@@ -204,12 +188,6 @@ namespace ConsoleApplication1
 
 			longestPalindrome = palindromes.OrderByDescending(w => w.Length).First();
 			return longestPalindrome;
-		}
-
-		public void HasSum(int[] array, int targetSum) 
-		{
-			Dictionary<int, int> disco = new Dictionary<int, int>();
-
 		}
 	}
 }

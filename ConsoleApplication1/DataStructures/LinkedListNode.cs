@@ -48,6 +48,15 @@ namespace ConsoleApplication1.DataStructures
 			return head;
 		}
 
+        public static Node BuildSecondSample()
+        {
+            Node head = new Node(7);
+            head.Next = new Node(8);
+            head.Next.Next = new Node(9);
+            head.Next.Next.Next = new Node(3);
+            return head;
+        }
+
 		public bool Search(int n)
 		{
 			Node head = this;
@@ -175,5 +184,51 @@ namespace ConsoleApplication1.DataStructures
 			}
 			return ListLength;
 		}
+
+        public static Node AddTwoNumbers(Node l1, Node l2) 
+        {
+            if((l1 == null)&&(l2==null))
+            {
+                return null;
+            }
+            else if (l1 == null) 
+            {
+                return l2;
+            }
+            else if (l2 == null) 
+            {
+                return l1;
+            }
+
+            Node dummy = new Node(0);
+            Node result = dummy;
+            int carry = 0, sum;
+
+            while ((l1 != null) || (l2 != null)) 
+            {
+                sum = carry;
+                if (l1 != null) 
+                {
+                    sum += l1.Data;
+                    l1 = l1.Next;
+                }
+                if (l2 != null) 
+                {
+                    sum += l2.Data;
+                    l2 = l2.Next;
+                }
+
+                carry = sum / 10;
+                sum = sum % 10;
+                result.Next = new Node(sum);
+                result = result.Next;
+            }
+
+            if (carry > 0) 
+            {
+                result.Next = new Node(carry);
+            }
+            return dummy.Next;
+        }
 	}
 }
