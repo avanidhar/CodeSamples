@@ -104,6 +104,27 @@ namespace ConsoleApplication1.DataStructures
 			return i;
 		}
 
+        public static int partition2(int[] arr, int low, int high) 
+        {
+            int pivot = (low + high)/2;
+            while (low <= high) 
+            {
+                while (arr[low] < arr[pivot]) low++;
+                while (arr[high] > arr[pivot]) high--;
+
+                if (low <= high)
+                {
+                    int temp = arr[low];
+                    arr[low] = arr[high];
+                    arr[high] = temp;
+                    low++; 
+                    high--;
+                }
+            }
+
+            return low;
+        }
+
 		/// <summary>
 		/// This is the code to find the kth smallest element. If you need to find the 
 		/// kth largest element, change the partition to check for greater than instead of less than
@@ -148,5 +169,23 @@ namespace ConsoleApplication1.DataStructures
 			if (a.Length == 0) return 0;
 			return 0;
 		}
+
+        public static void InPlaceShuffle(int[] a) 
+        {
+            if (a.Length == 0 || a.Length == 1) return;
+            int len = a.Length, i=0;
+            Random rand = new Random();
+            // We will use the beginning of the array as the destination. Pick random elements from the rest of the array
+            // and swap with the element at the beginning.
+
+           while(i <len) 
+            {
+                int idx = rand.Next(i, len);
+                int temp = a[i];
+                a[i] = a[idx];
+                a[idx] = temp;
+                i++;
+            }
+        }
 	}
 }

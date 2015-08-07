@@ -63,7 +63,8 @@ namespace ConsoleApplication1
 			//BinaryTreeNode<int>.PreOrderTraverse(head);
 			//Console.WriteLine(SearchAndSort.BinarySearch(a, 6));
 
-			//int [] a = new int[]{3,4,5,6,9,10,14,15};
+			int [] a = new int[]{3,4,5,6,9,10,14,15};
+            SearchAndSort.InPlaceShuffle(a);
 			//int[] b = new int[] { 2,8,7,1,3,5,6,4};
 			//SearchAndSort.QuickSort(b, 0, b.Count()-1);
 			//int element = SearchAndSort.FindKthSmallestElement(b, 8);
@@ -154,9 +155,10 @@ namespace ConsoleApplication1
             //bool isValidParen = Strings.ParenMatching(parens);
 
             //Console.WriteLine(Strings.IntegerToColumnId(29));
-            Node l1 = Node.BuildSample();
-            Node l2 = Node.BuildSecondSample();
-            Node.AddTwoNumbers(l1, l2).PrintList();
+            //Node l1 = Node.BuildSample();
+            //Node l2 = Node.BuildSecondSample();
+            //Node.AddTwoNumbers(l1, l2).PrintList();
+
 			Console.ReadKey(true);
 		}
 
