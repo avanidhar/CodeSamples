@@ -70,7 +70,7 @@ namespace ConsoleApplication1.DataStructures
 		{
 			if (low < high)
 			{
-				int pivot = partition(a, low, high);
+				int pivot = partition2(a, low, high);
 				QuickSort(a, low, pivot - 1);
 				QuickSort(a, pivot + 1, high);
 			}
@@ -104,25 +104,25 @@ namespace ConsoleApplication1.DataStructures
 			return i;
 		}
 
-        public static int partition2(int[] arr, int low, int high) 
+        public static int partition2(int[] a, int low, int high)
         {
-            int pivot = (low + high)/2;
-            while (low <= high) 
+            int i = low - 1;
+            int pivot = a[high];
+            for (int j = low; j < high; j++)
             {
-                while (arr[low] < arr[pivot]) low++;
-                while (arr[high] > arr[pivot]) high--;
-
-                if (low <= high)
+                if (a[j] <= pivot)
                 {
-                    int temp = arr[low];
-                    arr[low] = arr[high];
-                    arr[high] = temp;
-                    low++; 
-                    high--;
+                    i++;
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
                 }
-            }
 
-            return low;
+            }
+            int temp2 = a[i +1];
+            a[i+1] = a[high];
+            a[high] = temp2;
+            return i+1;
         }
 
 		/// <summary>
