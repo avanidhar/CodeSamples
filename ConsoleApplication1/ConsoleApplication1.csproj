@@ -43,9 +43,9 @@
   <ItemGroup>
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BitManipulation.cs" />
-    <Compile Include="DataStructures\Euler.cs" />
+    <Compile Include="Euler\Euler.cs" />
     <Compile Include="DataStructures\GraphNode.cs" />
-    <Compile Include="DataStructures\HackerRank.cs" />
+    <Compile Include="HackerRank\HackerRank.cs" />
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="DataStructures\Integers.cs" />
     <Compile Include="DataStructures\LinkedListNode.cs" />
@@ -60,17 +60,15 @@
     <Compile Include="DataStructures\Sudoku.cs" />
     <Compile Include="DataStructures\Trie.cs" />
     <Compile Include="DataStructures\TrieNode.cs" />
+    <Compile Include="HackerRank\HackerRank2.cs" />
+    <Compile Include="LeetCode\Solutions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Euler\" />
-    <Folder Include="HackerRank\" />
-    <Folder Include="LeetCode\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

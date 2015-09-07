@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApplication1.DataStructures;
+using ConsoleApplication1.HackerRank;
 namespace ConsoleApplication1
 {
 	class Program
@@ -66,7 +67,7 @@ namespace ConsoleApplication1
 			// int [] a = new int[]{3,4,5,6,9,10,14,15};
             // SearchAndSort.InPlaceShuffle(a);
 			int[] b = new int[] { 2,8,7,1,3,5,6,4};
-			SearchAndSort.QuickSort(b, 0, b.Count()-1);
+			//SearchAndSort.QuickSort(b, 0, b.Count()-1);
 			//int element = SearchAndSort.FindKthSmallestElement(b, 8);
 			//Strings.LongestIncreasingSubarray(b);
 			//SearchAndSort.MergeSort(b, 0, b.Length);
@@ -159,6 +160,15 @@ namespace ConsoleApplication1
             //Node l2 = Node.BuildSecondSample();
             //Node.AddTwoNumbers(l1, l2).PrintList();
 
+            //HackerRank2.staircase();
+
+            // string looknsay = LeetCode.Solutions.LookAndSay(7);
+            //int[,] array2D = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            //Console.WriteLine(LeetCode.Solutions.SearchInMatrix( array2D, 0));
+
+            int[] input = {5, 6, 7, 8};
+            int[] output = LeetCode.Solutions.ProductExceptSelf(input);
+            
 			Console.ReadKey(true);
 		}
 
