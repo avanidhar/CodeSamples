@@ -112,5 +112,138 @@ namespace ConsoleApplication1.LeetCode
 
             return output;
         }
+
+        public static int MissingNumber(int[] nums)
+        {
+            int n = nums.Length;
+            if (n == 0) return 0;
+
+            long totalSum = n * (n + 1) / 2;
+            long arrSum = 0;
+            foreach(int i in nums)
+            {
+                arrSum += i;
+            }
+
+            return Convert.ToInt32(totalSum - arrSum);
+        }
+
+        public static int FirstPositiveMissingNumber(int[] nums) 
+        {
+            int len = nums.Length;
+            if (len == 0) { return 1; }
+
+            for (int i = 0; i < len; i++) 
+            {
+                if ((nums[i] > 0) && (nums[i] <= len) && (nums[i] != nums[nums[i]-1])) 
+                {
+                    int temp = nums[nums[i] - 1];
+                    nums[nums[i] - 1] = nums[i];
+                    nums[i] = temp;
+                }
+            }
+
+            for (int i = 0; i < len; i++) 
+            {
+                if (nums[i] != i + 1) { return i + 1; }
+            }
+
+            return len + 1;
+        }
+
+        public static int MySqrt(int x)
+        {
+            if ((x == 0) || (x == 1)) return x;
+
+            long l = 0, r = x;
+
+            while (l <= r) 
+            {
+                long mid = l + (r - l) / 2;
+
+                long midSquare = mid * mid;
+
+                if (midSquare == x) return (int)mid;
+                else if (midSquare > x) r = mid - 1;
+                else l = mid + 1;
+            }
+
+            return (int)l - 1;
+        }
+
+        public static double MyPow(double x, int n)
+        {
+            double result = 1;
+            if (n == 0) return 1;
+            if (n < 0) 
+            {
+                n = -n;
+                x = 1 / x;
+            }
+
+            while (n != 0) 
+            {
+                if ((n&1) != 0)
+                {
+                    result *= x;
+                }
+
+                x *= x; n /= 2;
+            }
+
+            return result;
+        }
+
+        public static int SearchInsert(int[] nums, int target)
+        {
+            int l = 0, r = nums.Length - 1;
+
+            if (target < nums[0]) return 0;
+            if (target > nums[r]) return r + 1;
+            while (l <= r) 
+            {
+                int mid = l + (r - l) / 2;
+
+                if (nums[mid] == target) return mid;
+                else if (nums[mid] > target) r = mid - 1;
+                else l = mid + 1;
+            }
+            return nums[l] > target ? l : l + 1;
+        }
+
+        public static int[] SearchRange(int[] nums, int target)
+        {
+            int[] result = { -1, -1};
+            int l = 0, r = nums.Length - 1;
+
+            while (l <= r) 
+            {
+                int mid = l + (r - l) / 2;
+                if (nums[mid] == target) 
+                {
+                    int i = mid;
+                    while (i >= 0 && nums[mid] == nums[i]) 
+                    {
+                        i = i - 1;
+                    }
+
+                    result[0] = i + 1;
+                    i = mid;
+                    while (i < nums.Length && nums[mid] == nums[i]) { i++; }
+                    result[1] = i - 1;
+                    return result;
+                }
+                else if (nums[mid] > target) 
+                {
+                    r = mid - 1;
+                }
+                else 
+                {
+                    l = mid + 1;
+                }
+            }
+
+            return result;
+        }
     }
 }

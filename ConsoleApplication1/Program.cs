@@ -166,9 +166,12 @@ namespace ConsoleApplication1
             //int[,] array2D = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
             //Console.WriteLine(LeetCode.Solutions.SearchInMatrix( array2D, 0));
 
-            int[] input = {5, 6, 7, 8};
-            int[] output = LeetCode.Solutions.ProductExceptSelf(input);
-            
+            int[] input = {1,2,3,3,3,4};
+            // int[] output = LeetCode.Solutions.ProductExceptSelf(input);
+            //Console.WriteLine(LeetCode.Solutions.FirstPositiveMissingNumber(input));
+
+            // Console.WriteLine(LeetCode.Solutions.MySqrt(21));
+            var result = LeetCode.Solutions.SearchRange(input, 1);
 			Console.ReadKey(true);
 		}
 
