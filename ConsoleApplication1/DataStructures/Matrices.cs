@@ -43,5 +43,30 @@ namespace ConsoleApplication1.DataStructures
 			}
 		}
 
+        public static int FindCelebrity(int[,] people) 
+        {
+            int rows = people.GetLength(0);
+            int columns = rows;
+            int i = 0, j = 1;
+
+            while (j < columns) 
+            {
+                // If i does not know j, j cannot be the celebrity, so we proceed to next j
+                if (people[i, j] == 0) 
+                {
+                    j++;
+                }
+
+                // If i does know j, we've skipped all of the people before j. So, we update i to j and update j.
+                else if (people[i, j] == 1) 
+                {
+                    i = j;
+                    j++;
+                }
+            }
+
+            return i;
+        }
+
 	}
 }

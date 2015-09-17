@@ -171,7 +171,13 @@ namespace ConsoleApplication1
             //Console.WriteLine(LeetCode.Solutions.FirstPositiveMissingNumber(input));
 
             // Console.WriteLine(LeetCode.Solutions.MySqrt(21));
-            var result = LeetCode.Solutions.SearchRange(input, 1);
+            // string ziggy = "PAYPALISHIRING";
+           // var result = LeetCode.Solutions.SearchRange(input, 1);
+            // Console.WriteLine(LeetCode.Solutions.ZigzagConvert(ziggy, 4));
+
+            int[,] array2D = new int[,] { { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, {1, 0, 1, 1} };
+
+            Console.WriteLine(Matrices.FindCelebrity(array2D));
 			Console.ReadKey(true);
 		}
 

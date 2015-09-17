@@ -245,5 +245,29 @@ namespace ConsoleApplication1.LeetCode
 
             return result;
         }
+
+        public static string ZigzagConvert(string s, int numRows)
+        {
+            if (numRows <= 1) return s;
+            int cycleLength = 2 * numRows - 2;
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < numRows; i++) 
+            {
+                for (int j = i; j < s.Length; j += cycleLength) 
+                {
+                    sb.Append(s[j]);
+
+                    int nextInCycle = j - i + cycleLength - i;
+
+                    if (i != 0 && i != numRows - 1 && nextInCycle < s.Length) 
+                    {
+                        sb.Append(s[nextInCycle]);
+                    }
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }
