@@ -172,12 +172,22 @@ namespace ConsoleApplication1
 
             // Console.WriteLine(LeetCode.Solutions.MySqrt(21));
             // string ziggy = "PAYPALISHIRING";
-           // var result = LeetCode.Solutions.SearchRange(input, 1);
+            // var result = LeetCode.Solutions.SearchRange(input, 1);
             // Console.WriteLine(LeetCode.Solutions.ZigzagConvert(ziggy, 4));
 
-            int[,] array2D = new int[,] { { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, {1, 0, 1, 1} };
+            //int[,] array2D = new int[,] { { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, {1, 0, 1, 1} };
 
-            Console.WriteLine(Matrices.FindCelebrity(array2D));
+            //Console.WriteLine(Matrices.FindCelebrity(array2D));
+
+            LruCache cache = new LruCache();
+            cache.Set("a", 1);
+            cache.Set("b", 2);
+            cache.Set("c", 3);
+            cache.Set("d", 4);
+            cache.Set("e", 5);
+            cache.Set("f", 6);
+
+            cache.Get("c");
 			Console.ReadKey(true);
 		}
 
