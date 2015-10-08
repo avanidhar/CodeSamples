@@ -269,5 +269,78 @@ namespace ConsoleApplication1.LeetCode
 
             return sb.ToString();
         }
+
+        public static void MoveZeroesToEnd(int[] nums)
+        {
+            int length = nums.Length;
+            if (length <= 1) return;
+            int write_idx = 0;
+
+            for (int i = 0; i < length; i++) 
+            {
+                if (nums[i] != 0) 
+                {
+                    nums[write_idx++] = nums[i];
+                }
+            }
+
+            while (write_idx < length) 
+            {
+                nums[write_idx] = 0;
+                write_idx++;
+            }
+        }
+
+        /// <summary>
+        /// Solution to https://leetcode.com/problems/jump-game/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static bool CanJump(int[] nums)
+        {
+            int len = nums.Length;
+            if (len == 0) return false;
+            if (len == 1) return true;
+
+            int max_reachable_idx = 0;
+            int iter = 0;
+
+            while (iter < len) 
+            {
+                if (iter > max_reachable_idx) return false;
+                max_reachable_idx = Math.Max(max_reachable_idx, iter + nums[iter]);
+                iter++;
+            }
+
+            return true;
+        }
+
+        public static int LengthOfLongestSubstring(string s)
+        {
+            int length = s.Length;
+            if (s.Length <= 1) { return length; }
+
+            int maxLength = 1, left = 0, right = 0 ;
+            Dictionary<char, int> locationMap = new Dictionary<char, int>();
+            int i = 0;
+
+            for (i = 0; i < length; i++) 
+            {
+                if (locationMap.ContainsKey(s[i]))
+                {
+                    int location = locationMap[s[i]];
+                    maxLength = Math.Max(maxLength, right - left + 1);
+                    if (location >= left)
+                    {
+                        left = location + 1;
+                    }
+                    
+                }
+                locationMap[s[i]] = i;
+                right = i;
+            }
+
+            return Math.Max(maxLength, right - left + 1);
+        }
     }
 }

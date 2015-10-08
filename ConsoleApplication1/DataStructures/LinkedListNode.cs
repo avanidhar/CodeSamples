@@ -230,5 +230,27 @@ namespace ConsoleApplication1.DataStructures
             }
             return dummy.Next;
         }
+
+        public static Node SwapPairs(Node head)
+        {
+            if (head == null || head.Next == null) return head;
+            Node dummy = new Node(0);
+            dummy.Next = head;
+            Node pre = dummy;
+            Node current = head;
+            Node newHead = head;
+            Node next, nextNext;
+            while ((pre.Next != null) && (pre.Next.Next != null)) 
+            {
+                next = pre.Next; nextNext = next.Next;
+                pre.Next = next.Next;
+                next.Next = nextNext.Next;
+                pre.Next.Next = next;
+
+                pre = next;
+            }
+
+            return dummy.Next;
+        }
 	}
 }

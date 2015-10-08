@@ -60,7 +60,8 @@ namespace ConsoleApplication1.DataStructures
                 // If i does know j, we've skipped all of the people before j. So, we update i to j and update j.
                 else if (people[i, j] == 1) 
                 {
-                    i = j;
+                    // i = j;
+                    i++;
                     j++;
                 }
             }

@@ -187,5 +187,32 @@ namespace ConsoleApplication1.DataStructures
                 i++;
             }
         }
+
+        /// <summary>
+        /// This code computes the length of the longest increasing sub array in an integer array
+        /// </summary>
+        /// <param name="arr">The input array</param>
+        /// <returns>An integer denoting the length of the sub array which satisfies a[i] < a[i+1]</returns>
+        public static int LongestIncreasingSubArray(int[] arr) 
+        {
+            if (arr.Length <= 1) return arr.Length;
+            int i =1;
+            int maxLength = 1;
+            int currMaxLen = 1;
+            for (i = 1; i < arr.Length; i++) 
+            {
+                if (arr[i] > arr[i - 1])
+                {
+                    currMaxLen++;
+                }
+                else 
+                {
+                    maxLength = Math.Max(currMaxLen, maxLength);
+                    currMaxLen = 1;
+                }
+            }
+
+            return maxLength;
+        }
 	}
 }

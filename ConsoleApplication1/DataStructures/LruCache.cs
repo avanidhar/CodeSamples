@@ -8,18 +8,19 @@ namespace ConsoleApplication1.DataStructures
 {
     public class LruCache
     {
-        public static int CACHELEN = 5;
+        public int CACHELEN;
         LinkedList<int> data;
 
-        Dictionary<string, int> resourceMap;
+        Dictionary<int, int> resourceMap;
 
-        public LruCache()
+        public LruCache(int len)
         {
+            this.CACHELEN = len;
             data = new LinkedList<int>();
-            resourceMap = new Dictionary<string, int>();           
+            resourceMap = new Dictionary<int, int>();           
         }
 
-        public void Set(string key, int value)
+        public void Set(int key, int value)
         {
             if (resourceMap.ContainsKey(key))
             {
@@ -39,7 +40,7 @@ namespace ConsoleApplication1.DataStructures
             this.resourceMap.Add(key, value);
         }
 
-        public int Get(string key)
+        public int Get(int key)
         {
             if (!resourceMap.ContainsKey(key))
             {
