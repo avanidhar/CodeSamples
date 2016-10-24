@@ -175,5 +175,92 @@ namespace ConsoleApplication1.DataStructures
 			}
 			return -1;
 		}
-	}
+
+        /// <summary>
+        /// Find the number of occurrences of an integer in a sorted array
+        /// Approach : Find the first occurrence. Find the last. Diff + 1
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static int numTimes(int[] input, int n) {
+            if (input.Length == 0) return 0;
+            int len = input.Length;
+            int first = findFirst(input, 0, len - 1, n);
+            if (first == -1) return 0;
+            int last = findLast(input, 0, len - 1, n);
+            return last - first + 1;
+        }
+
+        public static int findFirst(int[] input, int low, int high, int n) {
+
+            while (low <= high) {
+                int mid = low + (high - low) / 2;
+                if (input[mid] == n && input[mid] > input[mid - 1])
+                {
+                    return mid;
+                }
+                else if (input[mid] < n)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+                
+            }
+            return -1;
+        }
+
+        public static int findLast(int[] input, int low, int high, int n) {
+            while (low <= high)
+            {
+                int mid = low + (high - low) / 2;
+                if (input[mid] == n && input[mid] < input[mid+1])
+                {
+                    return mid;
+                }
+                else if (input[mid] > n)
+                {
+                    high = mid -1;
+                }
+                else 
+                {
+                    low = mid + 1;
+                }
+
+            }
+            return -1;
+        }
+
+        public static int[] IncrementNumber(int[] num)
+        {
+            if (num == null || num.Length == 0) return num;
+
+            int len = num.Length - 1;
+            int sum = 0, carry = 0;
+
+            while (len >= 0)
+            {
+                sum = len == num.Length -1 ? 
+                    num[len] + carry + 1 : num[len] + carry;
+                carry = sum / 10;
+                sum = sum % 10;
+                num[len] = sum;
+                len--;
+            }
+
+            if (carry > 0)
+            {
+                int[] result = new int[num.Length + 1];
+                result[0] = carry;
+                num.CopyTo(result, 1);
+                return result;
+            }
+
+            return num;
+        }
+
+    }
 }

@@ -360,5 +360,46 @@ namespace ConsoleApplication1.DataStructures
 
 			return parenStack.Count == 0;
 		}
+
+        // This is similar to adding two linked lists
+        public static string AddBinary(string s1, string s2)
+        {
+            if (string.IsNullOrEmpty(s1)) return s2;
+            if (string.IsNullOrEmpty(s2)) return s1;
+
+            StringBuilder sb = new StringBuilder();
+            int len1 = s1.Length - 1, len2 = s2.Length - 1;
+
+            int carry = 0;
+
+            while (len1 >= 0 || len2 >= 0)
+            {
+                int sum = carry;
+
+                if (len1 >= 0)
+                {
+                    sum += s1[len1] - '0';
+                    len1--;
+                }
+
+                if (len2 >= 0)
+                {
+                    sum += s2[len2] - '0';
+                    len2--;
+                }
+
+                carry = sum / 2;
+                sum = sum % 2;
+
+                sb.Append(sum);
+            }
+
+            if (carry == 1)
+            {
+                sb.Append('1');
+            }
+
+            return sb.ToString();
+        }
 	}
 }

@@ -34,13 +34,13 @@ namespace ConsoleApplication1
 			//Console.WriteLine(BitManipulation.GetBit(5, 3));
 			//Console.WriteLine(4 ^ (~4));
 
-			BinaryTreeNode<int> head = new BinaryTreeNode<int>(5);
-			head.Left = new BinaryTreeNode<int>(4);
-			head.Left.Left = new BinaryTreeNode<int>(1);
-			head.Left.Right = new BinaryTreeNode<int>(2);
-			head.Right = new BinaryTreeNode<int>(7);
-			head.Right.Right = new BinaryTreeNode<int>(8);
-			head.Right.Left = new BinaryTreeNode<int>(6);
+			//BinaryTreeNode<int> head = new BinaryTreeNode<int>(5);
+			//head.Left = new BinaryTreeNode<int>(4);
+			//head.Left.Left = new BinaryTreeNode<int>(1);
+			//head.Left.Right = new BinaryTreeNode<int>(2);
+			//head.Right = new BinaryTreeNode<int>(7);
+			//head.Right.Right = new BinaryTreeNode<int>(8);
+			//head.Right.Left = new BinaryTreeNode<int>(6);
 
 			BinaryTreeNode<int> head2 = new BinaryTreeNode<int>(5);
 			head2.Left = new BinaryTreeNode<int>(4);
@@ -50,107 +50,115 @@ namespace ConsoleApplication1
 			head2.Right.Right = new BinaryTreeNode<int>(9);
 			head2.Right.Left = new BinaryTreeNode<int>(6);
 
-			//BinaryTreeNode<int>.PostOrderIter(head);
-			//BinaryTreeNode<int>.InOrderIter(head);
-			//BinaryTreeNode<int>.PreOrderIter(head);
-			//BinaryTreeNode<int>.LevelOrderTraversal(head);
-			//Console.WriteLine(BinaryTreeNode<int>.IsBST(head));
-			//var x = BinaryTreeNode<int>.PostOrderTraverse(head, new List<int>());
-			////BinaryTreeNode<int>.InsertNode(head, 7);
-			//head = BinaryTreeNode<int>.InsertNodeRecursive(head, 7);
-			//Console.WriteLine(BinaryTreeNode<int>.Search(head, 8));
-			//BinaryTreeNode<int>.InOrderTraverse(head);
-			//var leafList = BinaryTreeNode<int>.CreateLeafList(head);
-			//BinaryTreeNode<int>.PreOrderTraverse(head);
-			//Console.WriteLine(SearchAndSort.BinarySearch(a, 6));
+            BinaryTreeNode<int> head = new BinaryTreeNode<int>(5);
+            head.Left = new BinaryTreeNode<int>(4);
+            head.Left.Left = new BinaryTreeNode<int>(1);
+            head.Left.Right = new BinaryTreeNode<int>(2);
+            head.Right = new BinaryTreeNode<int>(4);
+            head.Right.Right = new BinaryTreeNode<int>(1);
+            head.Right.Left = new BinaryTreeNode<int>(2);
 
-			// int [] a = new int[]{3,4,5,6,9,10,14,15};
+            //BinaryTreeNode<int>.PostOrderIter(head);
+            //BinaryTreeNode<int>.InOrderIter(head);
+            //BinaryTreeNode<int>.PreOrderIter(head);
+            //BinaryTreeNode<int>.LevelOrderTraversal(head);
+            //Console.WriteLine(BinaryTreeNode<int>.IsBST(head));
+            //var x = BinaryTreeNode<int>.PostOrderTraverse(head, new List<int>());
+            ////BinaryTreeNode<int>.InsertNode(head, 7);
+            //head = BinaryTreeNode<int>.InsertNodeRecursive(head, 7);
+            //Console.WriteLine(BinaryTreeNode<int>.Search(head, 8));
+            //BinaryTreeNode<int>.InOrderTraverse(head);
+            //var leafList = BinaryTreeNode<int>.CreateLeafList(head);
+            //BinaryTreeNode<int>.PreOrderTraverse(head);
+            //Console.WriteLine(SearchAndSort.BinarySearch(a, 6));
+
+            // int [] a = new int[]{3,4,5,6,9,10,14,15};
             // SearchAndSort.InPlaceShuffle(a);
-			int[] b = new int[] { 2,8,7,1,3,5,6,4};
-			//SearchAndSort.QuickSort(b, 0, b.Count()-1);
-			//int element = SearchAndSort.FindKthSmallestElement(b, 8);
-			//Strings.LongestIncreasingSubarray(b);
-			//SearchAndSort.MergeSort(b, 0, b.Length);
-			//int[] array = new int[] { 4,8,-3,-4,12,9,-10,-1,2,3,20,4,11,-10};
-			//int[] array = new int[] { -2, -3, 4, -1, -2, 1, 5 };
-			// Console.Write(SearchAndSort.MaximumSum(array, 0, array.Count() -1));
-			//Console.Write(Integers.MaximumSum2(array));
-			//StackStruct myStack = new StackStruct(1);
-			//myStack.Push(2);
-			//myStack.Push(3);
-			//Console.WriteLine(myStack.pop());
-			//Console.WriteLine(myStack.pop());
-			//Console.WriteLine(myStack.pop());
+            int[] b = new int[] { 2,8,7,1,3,5,6,4};
+            //SearchAndSort.QuickSort(b, 0, b.Count()-1);
+            //int element = SearchAndSort.FindKthSmallestElement(b, 8);
+            //Strings.LongestIncreasingSubarray(b);
+            //SearchAndSort.MergeSort(b, 0, b.Length);
+            //int[] array = new int[] { 4,8,-3,-4,12,9,-10,-1,2,3,20,4,11,-10};
+            //int[] array = new int[] { -2, -3, 4, -1, -2, 1, 5 };
+            // Console.Write(SearchAndSort.MaximumSum(array, 0, array.Count() -1));
+            //Console.Write(Integers.MaximumSum2(array));
+            //StackStruct myStack = new StackStruct(1);
+            //myStack.Push(2);
+            //myStack.Push(3);
+            //Console.WriteLine(myStack.pop());
+            //Console.WriteLine(myStack.pop());
+            //Console.WriteLine(myStack.pop());
 
-			//HackerRank.partition(new int[] { 2, 8, 7, 1, 3, 5, 6, 4 });
+            //HackerRank.partition(new int[] { 2, 8, 7, 1, 3, 5, 6, 4 });
 
-			//Console.WriteLine(BitManipulation.SameWeightClosestInt(5));
+            //Console.WriteLine(BitManipulation.SameWeightClosestInt(5));
 
-			//Strings.PhoneNumberToWords("352");
+            //Strings.PhoneNumberToWords("352");
 
 
-			//MyHashTable hashTable = new MyHashTable();
-			//hashTable.Put("avani", 1);
-			//hashTable.Put("jessica", 2);
-			//hashTable.Put("kaycee", 3);
-			//hashTable.Put("janani", 4);
-			//hashTable.Put("inava", 22);
-			
-			//Console.WriteLine(hashTable.Exists("jinglee"));
+            //MyHashTable hashTable = new MyHashTable();
+            //hashTable.Put("avani", 1);
+            //hashTable.Put("jessica", 2);
+            //hashTable.Put("kaycee", 3);
+            //hashTable.Put("janani", 4);
+            //hashTable.Put("inava", 22);
 
-			//Strings.SplitString();
+            //Console.WriteLine(hashTable.Exists("jinglee"));
 
-			//string w1 = "avani";
-			//string w2 = "janani";
+            //Strings.SplitString();
 
-			//Console.WriteLine(Strings.EditDistance(w1, w2));
+            //string w1 = "avani";
+            //string w2 = "janani";
 
-			//int[,] array2D = new int[,] { { 1, 2, 3 }, {4,5,6 }, { 7, 8, 9 } };
-			//Matrices.PrintSpiral(array2D);
+            //Console.WriteLine(Strings.EditDistance(w1, w2));
 
-			//int[] a1 = {1, 2};
-			//int[] a2 = { 3, 5,7,9,14,16, 18, 15, 12, 10};
+            //int[,] array2D = new int[,] { { 1, 2, 3 }, {4,5,6 }, { 7, 8, 9 } };
+            //Matrices.PrintSpiral(array2D);
 
-			//int max = Integers.MthLargest(a1, a2, 4);
-			// Strings.Result result = Strings.SolveMasterMind("RGYB", "GGBR");
+            //int[] a1 = {1, 2};
+            //int[] a2 = { 3, 5,7,9,14,16, 18, 15, 12, 10};
 
-			//int[,] sudokuMatrix = new int[,] { { 0,0 , 3, 4 }, { 3, 4, 0, 0 }, { 0, 0, 4, 3 }, {0,3,2,0} };
-			//bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
-			// Uses backtracking to solve a maze.
-			//Maze simpleMaze = new Maze();
-			//int[,] maze = new int[,] { { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 1 }, { 0, 1, 1, 0, 1 }, { 0, 0, 1, 0, 1 }, { 0, 0, 0, 1, 1 } };
-			//simpleMaze.InputMaze = maze;
-			//simpleMaze.SolveMaze();
+            //int max = Integers.MthLargest(a1, a2, 4);
+            // Strings.Result result = Strings.SolveMasterMind("RGYB", "GGBR");
 
-			//string s = "ABCABA";
-			//string t = "ACEBA";
+            //int[,] sudokuMatrix = new int[,] { { 0,0 , 3, 4 }, { 3, 4, 0, 0 }, { 0, 0, 4, 3 }, {0,3,2,0} };
+            //bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
+            // Uses backtracking to solve a maze.
+            //Maze simpleMaze = new Maze();
+            //int[,] maze = new int[,] { { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 1 }, { 0, 1, 1, 0, 1 }, { 0, 0, 1, 0, 1 }, { 0, 0, 0, 1, 1 } };
+            //simpleMaze.InputMaze = maze;
+            //simpleMaze.SolveMaze();
 
-			// Console.WriteLine(Strings.LongestCommonSubsequence(s, t));
+            //string s = "ABCABA";
+            //string t = "ACEBA";
 
-			// string input = "This is my simple string+_+#";
-			// Strings.PrintMaxFreqString(input);
-			//bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
+            // Console.WriteLine(Strings.LongestCommonSubsequence(s, t));
 
-			//string pattern = "aaacaaaaac";
-			//int[] prefixMatch = Strings.ComputeKMPPrefix(pattern);
+            // string input = "This is my simple string+_+#";
+            // Strings.PrintMaxFreqString(input);
+            //bool solved = Sudoku.SolveSudoku(ref sudokuMatrix);
 
-			// Uses backtracking to place N Queens in an N*N chessboard
-			// in a non attacking position
-			//NQueens queen = new NQueens();
-			//queen.PlaceQueens(0);
+            //string pattern = "aaacaaaaac";
+            //int[] prefixMatch = Strings.ComputeKMPPrefix(pattern);
 
-			// Use Binary search to look for the max element in a sonusoidal array
-			//int monotonicHigh = SearchAndSort.LargestInMonotonicArray(a2, 0, a2.Length-1);
-			//Console.WriteLine("Monotonic high is : " + monotonicHigh);
+            // Uses backtracking to place N Queens in an N*N chessboard
+            // in a non attacking position
+            //NQueens queen = new NQueens();
+            //queen.PlaceQueens(0);
 
-			// bool sameTree = BinaryTreeNode<int>.IsSameTree(head, head2);
+            // Use Binary search to look for the max element in a sonusoidal array
+            //int monotonicHigh = SearchAndSort.LargestInMonotonicArray(a2, 0, a2.Length-1);
+            //Console.WriteLine("Monotonic high is : " + monotonicHigh);
 
-			// Use integer arithmatic to figure out if a number is a palindrome
-			//long n = 12321;
-			//bool isPalindrome = Integers.isPalindrome(n);
+            // bool sameTree = BinaryTreeNode<int>.IsSameTree(head, head2);
 
-			// Use binary search to figure out the square root of an integer
-			// int a = Integers.squareRoot(10);
+            // Use integer arithmatic to figure out if a number is a palindrome
+            //long n = 12321;
+            //bool isPalindrome = Integers.isPalindrome(n);
+
+            // Use binary search to figure out the square root of an integer
+            // int a = Integers.squareRoot(10);
 
             //string parens = "{[]}()";
             //bool isValidParen = Strings.ParenMatching(parens);
@@ -190,14 +198,40 @@ namespace ConsoleApplication1
             // int[,] array2D = new int[,] { { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, {1, 0, 1, 1} };
             //Console.WriteLine(Matrices.FindCelebrity(array2D));
 
-            //int[] input = { 3, 2, 1, 0, 4 };
+            int[] input = { 3, 2, 1, 0, 4 };
+            Array.Reverse(input);
 
             //string input = "babydoll";
             //Console.WriteLine(LeetCode.Solutions.LengthOfLongestSubstring(input));
 
-            Node treeHead = Node.BuildSecondSample();
+            // Node treeHead = Node.BuildSecondSample();
 
-            Node head22 = Node.SwapPairs(treeHead);
+            // Node head22 = Node.SwapPairs(treeHead);
+
+            //int[] nums = {-2, 3};
+            //Console.WriteLine(LeetCode.Solutions.MaxProduct(nums));
+
+            // HackerRank2.MaxHourglass();
+
+            // LeetCode.Solutions.CombinationSum3(3, 9);
+            // HackerRank2.staircase();
+
+            //string s1 = "1001";
+            //string s2 = "1010";
+            //string result = Strings.AddBinary(s1, s2);
+            //Console.WriteLine(result);
+
+            // HackerRank2.xorMAtrix();
+            int[] arr = { 9, 9, 9};
+            //int toFind = 4;
+            //int count = Integers.numTimes(arr, toFind);
+
+            //bool mirrored = BinaryTreeNode<int>.IsMirrorImage(head);
+            //Console.WriteLine(mirrored);
+
+            // bool escape = LeetCode.Solutions.CanJumpHard(arr);
+
+            arr = Integers.IncrementNumber(arr);
 			Console.ReadKey(true);
 		}
 

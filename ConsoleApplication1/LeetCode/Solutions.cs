@@ -315,6 +315,29 @@ namespace ConsoleApplication1.LeetCode
             return true;
         }
 
+
+        /// <summary>
+        /// Solution to https://leetcode.com/problems/jump-game/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static bool CanJumpHard(int[] nums)
+        {
+            if (nums.Length == 0) return true;
+
+            bool isEscapable = CanJumpHelper(nums, 0);
+
+            return isEscapable;
+        }
+
+        private static bool CanJumpHelper(int[] nums, int startIndex) {
+            if (startIndex >= nums.Length) return true;
+            for (int jumpValue = nums[startIndex]; jumpValue > 0; jumpValue--) {
+                if (CanJumpHelper(nums, startIndex + jumpValue)) return true;
+            }
+            return false;
+        }
+
         public static int LengthOfLongestSubstring(string s)
         {
             int length = s.Length;
@@ -341,6 +364,59 @@ namespace ConsoleApplication1.LeetCode
             }
 
             return Math.Max(maxLength, right - left + 1);
+        }
+
+        public static int MaxProduct(int[] nums) {
+            int len = nums.Length;
+            if (nums.Length == 0) return 0;
+            else if (len == 1) return nums[0];
+
+            int maxProd = int.MinValue, prodTillNow = 1;
+
+            for (int i = 0; i < len; i++) 
+            {
+                if (nums[i] > 0)
+                {
+                    prodTillNow *= nums[i];
+                    maxProd = Math.Max(prodTillNow, maxProd);
+                }
+                else if (nums[i] == 0)
+                {
+                    prodTillNow = 1;
+                }
+                else 
+                {
+                                    
+                }
+            }
+
+            return maxProd;
+        
+        }
+
+        public static List<List<int>> CombinationSum3(int k, int n)
+        {
+            List<List<int>> result = new List<List<int>>();
+            List<int> validCombo = new List<int>();
+            CombinationSumHelper(validCombo, result,1, k, n);
+            return result;
+        }
+
+        public static void CombinationSumHelper(List<int> validCombo, List<List<int>> answer, int start, int totalNumsToUse, int sum) 
+        {
+            if (validCombo.Count == totalNumsToUse && sum == 0) 
+            {
+                answer.Add(new List<int>(validCombo));
+                return;
+            }
+
+            for (int i = start; i < 10; i++) 
+            {
+                validCombo.Add(i);
+                CombinationSumHelper(validCombo, answer, i + 1, totalNumsToUse, sum - i);
+                validCombo.RemoveAt(validCombo.Count - 1);
+            }
+
         }
     }
 }

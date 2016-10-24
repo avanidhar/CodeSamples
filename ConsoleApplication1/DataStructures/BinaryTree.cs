@@ -299,5 +299,21 @@ namespace ConsoleApplication1.DataStructures
 				return false;
 			}
 		}
+
+        public static bool IsMirrorImage(BinaryTreeNode<T> root)
+        {
+            return IsMirrorHelper(root, root);
+        }
+
+        private static bool IsMirrorHelper(BinaryTreeNode<T> root1, BinaryTreeNode<T> root2) {
+            if (root1 == null && root2 == null) return true;
+
+            if (root1 != null && root2 != null && root1.Data.CompareTo(root2.Data)==0) {
+                return IsMirrorHelper(root1.Left, root2.Right) &&
+                    IsMirrorHelper(root1.Right, root2.Left);
+            }
+
+            return false;
+        }
 	}
 }
