@@ -261,6 +261,5 @@ namespace ConsoleApplication1.DataStructures
 
             return num;
         }
-
     }
 }

@@ -418,5 +418,31 @@ namespace ConsoleApplication1.LeetCode
             }
 
         }
+
+        /// <summary>
+        /// https://leetcode.com/problems/container-with-most-water/
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static int MaxArea(int[] height)
+        {
+            if (height.Length == 0) return 0;
+
+            int length = height.Length;
+
+            int left = 0, right = length-1, maxArea = Int32.MinValue;
+
+            while (left < right) {
+                maxArea = Math.Max(maxArea, (right - left) * Math.Min(height[left], height[right]));
+
+                if (height[left] < height[right])
+                {
+                    left++;
+                }
+                else right--;
+            }
+
+            return maxArea;
+        }
     }
 }

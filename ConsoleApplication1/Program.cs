@@ -222,7 +222,7 @@ namespace ConsoleApplication1
             //Console.WriteLine(result);
 
             // HackerRank2.xorMAtrix();
-            int[] arr = { 9, 9, 9};
+            // int[] arr = { 9, 9, 9};
             //int toFind = 4;
             //int count = Integers.numTimes(arr, toFind);
 
@@ -231,8 +231,18 @@ namespace ConsoleApplication1
 
             // bool escape = LeetCode.Solutions.CanJumpHard(arr);
 
-            arr = Integers.IncrementNumber(arr);
-			Console.ReadKey(true);
+            // arr = Integers.IncrementNumber(arr);
+
+            // int[,] maze = new int[,] { { 1, 0, 1, 1 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 0 }, { 1, 0, 0, 1 } };
+            // int regions = Codelab.Codelab.NumberOfRegions(maze);
+            // Console.WriteLine(regions);
+
+            //List<int> listInput = new List<int>() { 1, 2, 3, 4 };
+            //int result = Codelab.Codelab.maxp3(listInput);
+            //var result = Codelab.Codelab.wave(listInput);
+            var result = Recursion.GenerateParanthesis(3);
+            Console.WriteLine(result);
+            Console.ReadKey(true);
 		}
 
 		public static string GetLongestPalindrome(string input) 

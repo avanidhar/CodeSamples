@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codelab\Codelab.cs" />
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BitManipulation.cs" />
     <Compile Include="DataStructures\LruCache.cs" />
+    <Compile Include="DataStructures\Recursion.cs" />
     <Compile Include="Euler\Euler.cs" />
     <Compile Include="DataStructures\GraphNode.cs" />
     <Compile Include="HackerRank\HackerRank.cs" />

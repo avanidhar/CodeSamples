@@ -237,8 +237,6 @@ namespace ConsoleApplication1.DataStructures
             Node dummy = new Node(0);
             dummy.Next = head;
             Node pre = dummy;
-            Node current = head;
-            Node newHead = head;
             Node next, nextNext;
             while ((pre.Next != null) && (pre.Next.Next != null)) 
             {
