@@ -240,8 +240,9 @@ namespace ConsoleApplication1
             //List<int> listInput = new List<int>() { 1, 2, 3, 4 };
             //int result = Codelab.Codelab.maxp3(listInput);
             //var result = Codelab.Codelab.wave(listInput);
-            var result = Recursion.GenerateParanthesis(3);
-            Console.WriteLine(result);
+            // var result = Recursion.GenerateParanthesis(3);
+
+            Recursion.generateIPAddresses("25525511135");
             Console.ReadKey(true);
 		}
 
