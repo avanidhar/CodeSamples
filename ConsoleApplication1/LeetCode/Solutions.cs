@@ -345,6 +345,47 @@ namespace ConsoleApplication1.LeetCode
             return false;
         }
 
+        public static int NumberOfArithmeticSlices(int[] A)
+        {
+            if (A.Length <= 2) return 0;
+
+            int[] dp = new int[A.Length];
+            dp[0] = 0;
+            dp[1] = 0;
+
+            for (int i = 2; i < A.Length; i++)
+            {
+                if (A[i] - A[i - 1] == A[i - 1] - A[i - 2])
+                {
+                    dp[i] = dp[i - 1] + 1;
+                }
+                else {
+                    dp[i] = 0;
+                }
+            }
+
+            int sum = 0;
+            foreach (int val in dp)
+            {
+                sum += val;
+            }
+
+            return sum;
+        }
+
+        private static void JumpHelper(int[] nums, int startIndex, int[] count, int minJumps)
+        {
+            if (startIndex >= nums.Length)
+            {
+                count[0] = Math.Min(count[0], minJumps);
+                return;
+            }
+
+            for (int jumpVal = nums[startIndex]; jumpVal > 0; jumpVal--)
+            {
+                JumpHelper(nums, startIndex + jumpVal, count, minJumps++);
+            }
+        }
         public static int LengthOfLongestSubstring(string s)
         {
             int length = s.Length;
@@ -783,6 +824,73 @@ namespace ConsoleApplication1.LeetCode
             }
 
             return result;
+        }
+
+        public static string FrequencySort(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return string.Empty;
+            Dictionary<char, int> cache = new Dictionary<char, int>();
+            foreach (char c in s)
+            {
+                if (cache.ContainsKey(c))
+                {
+                    cache[c] += 1;
+                }
+                else {
+                    cache.Add(c, 1);
+                }
+            }
+
+            var sorted = cache.OrderByDescending(kvp => kvp.Value);
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var kvp in sorted)
+            {
+                for (int i = 0; i < kvp.Value; i++)
+                {
+                    sb.Append(kvp.Key);
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        public static int FindPeakElement(int[] nums)
+        {
+            int length = nums.Length;
+            int low = 0, high = length - 1;
+
+            while (low <= high)
+            {
+                int mid = low + (high - low) / 2;
+
+                if ((nums[mid] > nums[mid - 1]) && (nums[mid] > nums[mid + 1])) return mid;
+                else if ((nums[mid] > nums[mid - 1]) && (nums[mid] < nums[mid + 1])) low = mid + 1;
+                else high = mid - 1;
+            }
+
+            return -1;
+        }
+
+        public static bool WordBreak(string s, ISet<string> wordDict)
+        {
+            if (string.IsNullOrEmpty(s)) return true;
+
+            bool[] possible = new bool[s.Length + 1];
+            possible[0] = true;
+
+            for (int i = 1; i < s.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (possible[j] && wordDict.Contains(s.Substring(j, i - j)))
+                    {
+                        possible[i] = true;
+                    }
+                }
+            }
+
+            return possible[possible.Length - 1];
         }
 
     }

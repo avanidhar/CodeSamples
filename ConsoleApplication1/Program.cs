@@ -245,8 +245,9 @@ namespace ConsoleApplication1
             // Recursion.generateIPAddresses("25525511135");
 
             // int[,] nums = new int[,]{ { 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 }, { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 } };
-            int[] nums = new int[] { 1, 1, 1, 2, 2, 3 };
-            var result = LeetCode.Solutions.TopKFrequent(nums, 2);
+            int[] nums = new int[] { 1, 2, 3, 4 };
+            // var result = LeetCode.Solutions.TopKFrequent(nums, 2);
+            var result = LeetCode.Solutions.NumberOfArithmeticSlices(nums);
             Console.WriteLine(result);
             Console.ReadKey(true);
 		}
