@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1.LeetCode
 {
+    public class ListNode
+    {
+      public int val;
+      public ListNode next;
+      public ListNode(int x) { val = x; }
+  }
+
     public static class Solutions
     {
         public static int Robber(int[] nums) 
@@ -444,5 +451,339 @@ namespace ConsoleApplication1.LeetCode
 
             return maxArea;
         }
+
+        public static string RemoveDuplicateLetters(string s)
+        {
+            if (string.IsNullOrEmpty(s) || s.Length < 2) return s;
+            StringBuilder sb = new StringBuilder();
+
+            bool[] res = new bool[26];
+
+            foreach (char c in s.ToCharArray())
+            {
+                if (!res[c - 'a'])
+                {
+                    res[c - 'a'] = true;
+                }
+            }
+
+            for (int i = 0; i < 26; i++)
+            {
+                if (res[i])
+                {
+                    sb.Append((char)('a' + i));
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/odd-even-linked-list/
+        /// </summary>
+        /// <param name="head">The head node</param>
+        /// <returns>The list with an even odd split</returns>
+        public static ListNode OddEvenList(ListNode head)
+        {
+            if (head == null || head.next == null) return head;
+            ListNode odd = head, even = head.next, evenHead = even;
+            while (odd.next != null && even.next != null) {
+                odd.next = even.next;
+                odd = odd.next;
+
+                even.next = odd.next;
+                even = even.next;
+            }
+
+            odd.next = evenHead;
+            return head;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/longest-increasing-subsequence/
+        /// </summary>
+        /// <param name="nums">The input array</param>
+        /// <returns></returns>
+        public static int LengthOfLIS(int[] nums)
+        {
+            int length = nums.Length;
+            if (length == 0) return 0;
+
+            int[] res = new int[length];
+            res[0] = 1;
+
+            for (int i = 1; i < length; i++) {
+                for (int j = 0; j < i; j++)
+                {
+                    if(nums[i] > nums[j])
+                    {
+                        res[i] = Math.Max(res[i], res[j] + 1);
+                    }
+                }
+            }
+
+            int maxLen = 0;
+
+            for (int i = 0; i < length; i++)
+            {
+                maxLen = Math.Max(maxLen, res[i]);
+            }
+
+            return maxLen;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/russian-doll-envelopes/
+        /// </summary>
+        /// <param name="envelopes"></param>
+        /// <returns></returns>
+        public static int MaxEnvelopes(int[,] envelopes)
+        {
+            // TODO TODO
+            // use a comparator to sort this array
+            // Then find the longest increasing subsequence like above.
+            return 0;
+        }
+
+        public static IList<IList<int>> CombinationSum2(int[] candidates, int target)
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+
+            Array.Sort(candidates);
+
+            CombinationSumHelper(candidates, 0, target, new List<int>(), result);
+
+            return result.Distinct().ToList();
+        }
+
+        public static void CombinationSumHelper(int[] candidates, int index, int target, List<int> holder, IList<IList<int>> result)
+        {
+            if (target == 0) {
+                result.Add(new List<int>(holder));
+                return;
+            }
+
+            if (index >= candidates.Length)
+            {
+                return;
+            }
+
+            CombinationSumHelper(candidates, index + 1, target, holder, result);
+
+            holder.Add(candidates[index]);
+            CombinationSumHelper(candidates, index + 1, target - candidates[index], holder, result);
+            holder.RemoveAt(holder.Count - 1);
+        }
+
+        public static string[] missingWords(string s, string t)
+        {
+
+            if (string.IsNullOrEmpty(s)) return null;
+            var sequence = s.Split(' ');
+
+            if (string.IsNullOrEmpty(t)) return sequence;
+            var text = t.Split(' ').Select( item => item.ToLower());
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            foreach (string element in text)
+            {
+                dictionary.Add(element, element);
+            }
+
+            var result = new List<string>();
+
+            foreach (string element in sequence)
+            {
+                if (!dictionary.ContainsKey(element.ToLower()))
+                {
+                    result.Add(element);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public static int fourthBit(int num)
+        {
+            if (num == 0) return 0;
+            int count = 1;
+            while (count < 4)
+            {
+                num = num >> 1;
+                count++;
+            }
+
+            return (num & 1);
+        }
+
+        public static long kSub(int k, int[] nums)
+        {
+            long result = 0;
+            int length = nums.Length;
+            if (length == 0) return 0;
+            for(int i =0; i<length; i++)
+            {
+                long sum = 0;
+                for (int j = i; j < length; j++)
+                {
+                    sum += nums[j];
+                    if (sum % k == 0) result++;
+                }
+            }
+
+            return result;
+        }
+
+        public static void customSort(int[] arr)
+        {
+            if (arr.Length == 0) return;
+
+            // Sort the array in increasing order
+            Array.Sort(arr);
+
+            Dictionary<int, int> cache = new Dictionary<int, int>();
+
+            foreach (int element in arr)
+            {
+                if (cache.ContainsKey(element))
+                {
+                    cache[element] = cache[element] + 1;
+                }
+                else
+                {
+                    cache.Add(element, 1);
+                }
+            }
+
+            // Sort the cache in ascending order of keys
+            var sortedByValue = cache.OrderBy(item => item.Value);
+
+            foreach (var kvp in sortedByValue)
+            {
+                for (int i = 1; i <= kvp.Value; i++)
+                {
+                    Console.WriteLine(kvp.Key);
+                }
+            }
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/pacific-atlantic-water-flow/
+        /// </summary>
+        /// <param name="matrix">The input</param>
+        /// <returns></returns>
+        public static IList<int[]> PacificAtlantic(int[,] matrix)
+        {
+            IList<int[]> result = new List<int[]>();
+            if (matrix.GetLength(0) == 0) return result;
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            bool[,] pacific = new bool[rows, cols];
+            bool[,] atlantic = new bool[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+            {
+                explore(matrix, pacific, i, 0);
+                explore(matrix, atlantic, i, cols - 1);
+            }
+
+            for (int j = 0; j < cols; j++)
+            {
+                explore(matrix, pacific, 0, j);
+                explore(matrix, atlantic, rows - 1, j);
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (pacific[i, j] == true && atlantic[i, j] == true)
+                    {
+                        result.Add(new int[] { i, j });
+                    }
+                }
+            }
+            return result;
+
+        }
+
+        public static void explore(int[,] matrix, bool[,] visited, int row, int col)
+        {
+            visited[row, col] = true;
+
+            if ((isSafeToFlow(matrix, visited, row -1, col)) && (matrix[row, col] <= matrix[row - 1, col])) explore(matrix, visited, row - 1, col);
+            if ((isSafeToFlow(matrix, visited, row + 1, col)) && (matrix[row, col] <= matrix[row + 1, col])) explore(matrix, visited, row + 1, col);
+            if ((isSafeToFlow(matrix, visited, row, col + 1)) && (matrix[row, col] <= matrix[row , col + 1])) explore(matrix, visited, row, col + 1);
+            if ((isSafeToFlow(matrix, visited, row, col -1)) && (matrix[row, col] <= matrix[row, col - 1])) explore(matrix, visited, row, col - 1);
+        }
+
+        public static bool isSafeToFlow(int[,] matrix, bool[,] visited, int row, int col)
+        {
+            return row >= 0 && row < matrix.GetLength(0) && col >= 0 && col < matrix.GetLength(1) && !visited[row, col];
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/pascals-triangle-ii/
+        /// </summary>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        public static IList<int> GetRow(int rowIndex)
+        {
+            IList<int> current = new List<int>();
+            List<int> next = new List<int>();
+
+            current.Add(1);
+
+            for (int i = 1; i <= rowIndex; i++) {
+                next.Add(1);
+                for(int j = 1; j < current.Count; j++)
+                {
+                    next.Add(current[j] + current[j - 1]);
+                }
+                next.Add(1);
+
+                current = next;
+                next = new List<int>();
+            }
+
+            return current;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/top-k-frequent-elements/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static IList<int> TopKFrequent(int[] nums, int k)
+        {
+            IList<int> result = new List<int>();
+            int i = 0;
+            Dictionary<int, int> cache = new Dictionary<int, int>();
+
+            foreach (int num in nums)
+            {
+                if (cache.ContainsKey(num))
+                {
+                    cache[num] = cache[num] + 1;
+                }
+                else
+                {
+                    cache.Add(num, 1);
+                }
+            }
+
+            var sortedByValue = cache.OrderByDescending(kvp => kvp.Value);
+
+            while (i < k)
+            {
+                result.Add(sortedByValue.ElementAt(i).Key);
+                i++;
+            }
+
+            return result;
+        }
+
     }
 }

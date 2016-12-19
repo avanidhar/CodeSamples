@@ -240,9 +240,14 @@ namespace ConsoleApplication1
             //List<int> listInput = new List<int>() { 1, 2, 3, 4 };
             //int result = Codelab.Codelab.maxp3(listInput);
             //var result = Codelab.Codelab.wave(listInput);
-            // var result = Recursion.GenerateParanthesis(3);
+            //var result = Recursion.GenerateParanthesis(3);
 
-            Recursion.generateIPAddresses("25525511135");
+            // Recursion.generateIPAddresses("25525511135");
+
+            // int[,] nums = new int[,]{ { 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 }, { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 } };
+            int[] nums = new int[] { 1, 1, 1, 2, 2, 3 };
+            var result = LeetCode.Solutions.TopKFrequent(nums, 2);
+            Console.WriteLine(result);
             Console.ReadKey(true);
 		}
 
