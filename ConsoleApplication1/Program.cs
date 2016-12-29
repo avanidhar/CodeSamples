@@ -251,14 +251,22 @@ namespace ConsoleApplication1
 
             // var result = LeetCode.OverFlow.FindRepeatedDnaSequences("AAAAAAAAAAAA");
 
-            HashSet<string> dictionary = new HashSet<string>();
-            dictionary.Add("aa");
-            dictionary.Add("ab");
-            dictionary.Add("ac");
-            dictionary.Add("bc");
-            dictionary.Add("cc");
+            //HashSet<string> dictionary = new HashSet<string>();
+            //dictionary.Add("aa");
+            //dictionary.Add("ab");
+            //dictionary.Add("ac");
+            //dictionary.Add("bc");
+            //dictionary.Add("cc");
 
-            var result = Graphs.doesPathExist("aa", "cd", dictionary);
+            // var result = Graphs.doesPathExist("aa", "cd", dictionary);
+
+            HashSet<string> dictionary2 = new HashSet<string>();
+            dictionary2.Add("fireman");
+            dictionary2.Add("fire");
+            dictionary2.Add("man");
+            dictionary2.Add("fir");
+
+            var result = Recursion.maxWordPartition("fireman", dictionary2);
             Console.WriteLine(result);
             Console.ReadKey(true);
 		}

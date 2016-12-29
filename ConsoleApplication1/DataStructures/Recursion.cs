@@ -9,6 +9,7 @@ namespace ConsoleApplication1.DataStructures
 {
     public class Recursion
     {
+        #region Parenthesis
         public static List<string> GenerateParanthesis(int numPairs)
         {
             List<string> result = new List<string>();
@@ -39,7 +40,9 @@ namespace ConsoleApplication1.DataStructures
                 sb.Length--;
             }
         }
+        #endregion
 
+        #region combinationsum
         public static List<List<int>> CombinationSum3(int k, int n)
         {
             List<List<int>> result = new List<List<int>>();
@@ -64,7 +67,9 @@ namespace ConsoleApplication1.DataStructures
             }
 
         }
+        #endregion
 
+        #region generateIpAddresses
         public static void generateIPAddresses(string input)
         {
             if (input.Length < 4)
@@ -109,5 +114,44 @@ namespace ConsoleApplication1.DataStructures
             MatchCollection result = ip.Matches(input);
             return result.Count > 0;
         }
+        #endregion
+
+        #region maximal word partition
+        /// <summary>
+        /// Given a word and a dictionary of valid words, find
+        /// the maximal number of word partitions possible
+        /// .. "fireman" can be split into
+        /// ..."fire", "man"
+        /// ..."fireman"
+        /// .. so the maximal partition for fireman is 2
+        /// </summary>
+        public static int maxWordPartition(string input, HashSet<string> dictionary)
+        {
+            int partitionCount = 0;
+
+            if (string.IsNullOrEmpty(input)) return 0;
+            partitionCountHelper(input, dictionary, ref partitionCount);
+            return partitionCount;
+        }
+
+        private static void partitionCountHelper(string input, HashSet<string> dictionary, ref int count)
+        {
+            if (input.Length == 0)
+            {
+                count++;
+                return;
+            }
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                string first = input.Substring(0, i+1);
+                if (dictionary.Contains(first))
+                {
+                    string rest = input.Substring(i+1);
+                    partitionCountHelper(rest, dictionary, ref count);
+                }
+            }
+        }
+        #endregion
     }
 }
