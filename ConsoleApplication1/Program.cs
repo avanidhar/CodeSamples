@@ -247,7 +247,11 @@ namespace ConsoleApplication1
             // int[,] nums = new int[,]{ { 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 }, { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 } };
             int[] nums = new int[] { 1, 2, 3, 4 };
             // var result = LeetCode.Solutions.TopKFrequent(nums, 2);
-            var result = LeetCode.Solutions.NumberOfArithmeticSlices(nums);
+            // var result = LeetCode.Solutions.NumberOfArithmeticSlices(nums);
+
+            // var result = LeetCode.OverFlow.FindRepeatedDnaSequences("AAAAAAAAAAAA");
+
+            var result = LeetCode.OverFlow.FindSubstringInWraproundString("cabc");
             Console.WriteLine(result);
             Console.ReadKey(true);
 		}

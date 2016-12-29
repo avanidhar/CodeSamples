@@ -44,7 +44,9 @@
     <Compile Include="Codelab\Codelab.cs" />
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BitManipulation.cs" />
+    <Compile Include="DataStructures\Graphs.cs" />
     <Compile Include="DataStructures\LruCache.cs" />
+    <Compile Include="DataStructures\MovingAverageWindow.cs" />
     <Compile Include="DataStructures\Recursion.cs" />
     <Compile Include="Euler\Euler.cs" />
     <Compile Include="DataStructures\GraphNode.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="DataStructures\Trie.cs" />
     <Compile Include="DataStructures\TrieNode.cs" />
     <Compile Include="HackerRank\HackerRank2.cs" />
+    <Compile Include="LeetCode\OverFlow.cs" />
     <Compile Include="LeetCode\Solutions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
