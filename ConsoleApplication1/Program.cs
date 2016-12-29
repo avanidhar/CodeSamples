@@ -251,7 +251,14 @@ namespace ConsoleApplication1
 
             // var result = LeetCode.OverFlow.FindRepeatedDnaSequences("AAAAAAAAAAAA");
 
-            var result = LeetCode.OverFlow.FindSubstringInWraproundString("cabc");
+            HashSet<string> dictionary = new HashSet<string>();
+            dictionary.Add("aa");
+            dictionary.Add("ab");
+            dictionary.Add("ac");
+            dictionary.Add("bc");
+            dictionary.Add("cc");
+
+            var result = Graphs.doesPathExist("aa", "cd", dictionary);
             Console.WriteLine(result);
             Console.ReadKey(true);
 		}
