@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApplication1.DataStructures;
 using ConsoleApplication1.HackerRank;
+using ConsoleApplication1.Concepts;
+
 namespace ConsoleApplication1
 {
 	class Program
@@ -260,14 +262,22 @@ namespace ConsoleApplication1
 
             // var result = Graphs.doesPathExist("aa", "cd", dictionary);
 
-            HashSet<string> dictionary2 = new HashSet<string>();
-            dictionary2.Add("fireman");
-            dictionary2.Add("fire");
-            dictionary2.Add("man");
-            dictionary2.Add("fir");
+            //HashSet<string> dictionary2 = new HashSet<string>();
+            //dictionary2.Add("fireman");
+            //dictionary2.Add("fire");
+            //dictionary2.Add("man");
+            //dictionary2.Add("fir");
 
-            var result = Recursion.maxWordPartition("fireman", dictionary2);
-            Console.WriteLine(result);
+            // var result = Recursion.maxWordPartition("fireman", dictionary2);
+
+            IntegerIdPool idPool = new IntegerIdPool();
+            for(int i = 0; i < 10; i++)
+            {
+                var result = idPool.getId();
+                Console.WriteLine(result);
+
+                idPool.releaseId(result);
+            }
             Console.ReadKey(true);
 		}
 
