@@ -270,7 +270,7 @@ namespace ConsoleApplication1
 
             // var result = Recursion.maxWordPartition("fireman", dictionary2);
 
-            var result = Arrays.DoesSumExist(nums, 4);
+            var result = Arrays.DoesSumExist(nums, 6);
             Console.WriteLine(result);
             Console.ReadKey(true);
 		}

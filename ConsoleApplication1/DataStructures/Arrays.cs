@@ -8,24 +8,24 @@ namespace ConsoleApplication1.DataStructures
 {
     public static class Arrays
     {
-        public static bool DoesSumExist(int[] arr, int sum)
+        public static Tuple<int, int> DoesSumExist(int[] arr, int sum)
         {
-            if (arr.Length == 0) return false;
+            if (arr.Length == 0) return Tuple.Create(-1, -1);
             int cur_sum = arr[0], start = 0;
 
             for (int i = 1; i < arr.Length; i++)
             {
                 cur_sum += arr[i];
 
-                while (cur_sum > sum && start < i)
+                while (cur_sum > sum && start <= i)
                 {
                     cur_sum -= arr[start++];
                 }
 
-                if (cur_sum == sum) return true;
+                if (cur_sum == sum) return Tuple.Create(start, i);
             }
 
-            return false;
+            return Tuple.Create(-1, -1);
         }
     }
 }
