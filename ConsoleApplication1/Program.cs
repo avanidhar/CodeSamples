@@ -270,14 +270,8 @@ namespace ConsoleApplication1
 
             // var result = Recursion.maxWordPartition("fireman", dictionary2);
 
-            IntegerIdPool idPool = new IntegerIdPool();
-            for(int i = 0; i < 10; i++)
-            {
-                var result = idPool.getId();
-                Console.WriteLine(result);
-
-                idPool.releaseId(result);
-            }
+            var result = Arrays.DoesSumExist(nums, 4);
+            Console.WriteLine(result);
             Console.ReadKey(true);
 		}
 

@@ -44,6 +44,7 @@
     <Compile Include="Codelab\Codelab.cs" />
     <Compile Include="Concepts\IntegerIdPool.cs" />
     <Compile Include="Concepts\ReaderWriterProblem.cs" />
+    <Compile Include="DataStructures\Arrays.cs" />
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BitManipulation.cs" />
     <Compile Include="DataStructures\Graphs.cs" />
