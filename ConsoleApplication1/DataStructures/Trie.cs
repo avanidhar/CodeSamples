@@ -15,25 +15,44 @@ namespace ConsoleApplication1.DataStructures
 			root = new TrieNode();
 			foreach (string word in words) 
 			{
-				root.AddWord(word);
+                AddWord(word);
 			}
 		}
 
 		public Trie(string word) 
 		{
 			root = new TrieNode();
-			root.AddWord(word);
+            AddWord(word);
 		}
 
 		public void AddWord(string word) 
 		{
-			if (root == null) 
-			{
-				root = new TrieNode();
-			}
+            if (string.IsNullOrEmpty(word)) return;
 
-			root.AddWord(word);
-		}
+            TrieNode cur = root;
+            var children = cur.children;
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (children.ContainsKey(word[i]))
+                {
+                    cur = children[word[i]];
+                }
+                else
+                {
+                    TrieNode t = new TrieNode(word[i]);
+                    children.Add(word[i], t);
+                    cur = t;
+                }
+                children = cur.children;
+
+                if (i == word.Length - 1)
+                {
+                    cur.terminates = true;
+                }
+            }
+
+        }
 
 		public bool ContainsWord(string word) 
 		{
@@ -42,22 +61,47 @@ namespace ConsoleApplication1.DataStructures
 				return false;
 			}
 
-			TrieNode lastNode = root;
+			TrieNode cur = root;
+            var children = cur.children;
 			for (int i = 0; i < word.Length; i++) 
 			{
-				lastNode = lastNode.GetChild(word[i]);
-				if (lastNode == null) 
-				{
-					return false;
-				}
+                if (children.ContainsKey(word[i]))
+                {
+                    cur = children[word[i]];
+                    children = cur.children;
+                }
+                else
+                {
+                    return false;
+                }
 			}
 
-			return lastNode.GetTermination() == true;
+			return cur.terminates;
 		}
 
 		public bool ContainsPrefix(string prefix) 
 		{
-			return false;
+            if (string.IsNullOrEmpty(prefix)) 
+			{
+				return false;
+			}
+
+			TrieNode cur = root;
+            var children = cur.children;
+			for (int i = 0; i < prefix.Length; i++) 
+			{
+                if (children.ContainsKey(prefix[i]))
+                {
+                    cur = children[prefix[i]];
+                    children = cur.children;
+                }
+                else
+                {
+                    return false;
+                }
+			}
+
+			return true;
 		}
 	}
 }

@@ -91,5 +91,30 @@ namespace ConsoleApplication1.LeetCode
 
             return sum;
         }
+
+        public static int MinSubArrayLen(int s, int[] nums)
+        {
+            if (nums == null || nums.Length == 0) return 0;
+            int minLen = Int32.MaxValue;
+
+            int cur_sum = nums[0], start = 0;
+
+            for (int i = 1; i < nums.Length; i++)
+            {
+                cur_sum += nums[i];
+
+                while (cur_sum > s && start <= i)
+                {
+                    cur_sum -= nums[start++];
+                }
+
+                if (cur_sum == s)
+                {
+                    minLen = Math.Min(minLen, i - start);
+                }
+            }
+
+            return minLen == Int32.MaxValue ? 0 : minLen;
+        }
     }
 }

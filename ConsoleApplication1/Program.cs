@@ -270,39 +270,14 @@ namespace ConsoleApplication1
 
             // var result = Recursion.maxWordPartition("fireman", dictionary2);
 
-            var result = Arrays.DoesSumExist(nums, 6);
+            // string palInput = "avenaanee";
+            var result = Strings.stringPermutations("cat");
+
+            //Trie t = new Trie("avanidhar");
+            //var result = t.ContainsPrefix("avani");
+
             Console.WriteLine(result);
             Console.ReadKey(true);
-		}
-
-		public static string GetLongestPalindrome(string input) 
-		{
-			if (string.IsNullOrEmpty(input)) 
-			{
-				return string.Empty;
-			}
-			int length = input.Length;
-			List<string> palindromes = new List<string>();
-			string currentPalindrome = string.Empty, longestPalindrome = string.Empty;
-			int leftIndex = 0, rightIndex = 0;
-			for (int i = 1; i < length - 1; i++) 
-			{
-				leftIndex = i - 1;
-				rightIndex = i + 1;
-				while (leftIndex >= 0 && rightIndex < length) 
-				{
-					if (input[leftIndex] != input[rightIndex])
-					{
-						break;
-					}
-					string palindrome = input.Substring(leftIndex, rightIndex - leftIndex + 1);
-					palindromes.Add(palindrome);
-					leftIndex--; rightIndex++;
-				}
-			}
-
-			longestPalindrome = palindromes.OrderByDescending(w => w.Length).First();
-			return longestPalindrome;
 		}
 	}
 }

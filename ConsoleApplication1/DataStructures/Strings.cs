@@ -401,5 +401,76 @@ namespace ConsoleApplication1.DataStructures
 
             return sb.ToString();
         }
-	}
+
+        public static int longestPalindromicSubstring(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return 0;
+
+            int longestPalLen = Int32.MinValue, len = 0;
+
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                len = palindromeLength(i, i, input);
+                longestPalLen = Math.Max(longestPalLen, len);
+
+                len = palindromeLength(i, i + 1, input);
+                longestPalLen = Math.Max(longestPalLen, len);
+            }
+
+            return longestPalLen;
+        }
+
+        private static int palindromeLength(int startIdx, int endIdx, string input)
+        {
+            if (input[startIdx] != input[endIdx]) return 0;
+
+            int i = startIdx, j = endIdx, len = 0;
+
+            while (i >= 0 && j < input.Length && input[i] == input[j])
+            {
+                len = j - i + 1;
+                i--;
+                j++;
+            }
+
+            return len;
+        }
+
+        #region permute string
+        public static List<string> stringPermutations(string input)
+        {
+            List<string> result = new List<string>();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                result.Add(" ");
+                return result;
+            }
+
+            char c = input[0];
+
+            // Uncomment the following line if you want combinations as well
+            // result.Add("" + c);
+
+            string remaining = input.Substring(1);
+            List<string> intermediates = stringPermutations(remaining);
+
+            /*
+            TO DO : Move this code into a separate method to keep it clean.
+            */
+            foreach (string s in intermediates)
+            {
+                for (int i = 0; i < s.Length; i++)
+                {
+                    string newString = s.Substring(0, i + 1) + c + s.Substring(i + 1);
+                    result.Add(newString);
+                }
+            }
+
+            // Uncomment the following line if you want combinations as well
+            // result.AddRange(intermediates);
+
+            return result;
+        }
+        #endregion
+    }
 }
