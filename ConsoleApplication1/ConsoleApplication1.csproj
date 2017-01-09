@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codelab\Codelab.cs" />
+    <Compile Include="Concepts\Calculator.cs" />
     <Compile Include="Concepts\IntegerIdPool.cs" />
     <Compile Include="Concepts\ReaderWriterProblem.cs" />
     <Compile Include="DataStructures\Arrays.cs" />

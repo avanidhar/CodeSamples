@@ -271,12 +271,19 @@ namespace ConsoleApplication1
             // var result = Recursion.maxWordPartition("fireman", dictionary2);
 
             // string palInput = "avenaanee";
-            var result = Strings.stringPermutations("cat");
+            // var result = Strings.stringPermutations("cat");
 
             //Trie t = new Trie("avanidhar");
             //var result = t.ContainsPrefix("avani");
 
-            Console.WriteLine(result);
+            // Console.WriteLine(result);
+
+            Calculator c = new Calculator();
+            c.KeyPressed('1');
+            c.KeyPressed('2');
+            c.KeyPressed('+');
+            c.KeyPressed('2');
+            c.KeyPressed('=');
             Console.ReadKey(true);
 		}
 	}
