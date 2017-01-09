@@ -27,5 +27,39 @@ namespace ConsoleApplication1.DataStructures
 
             return Tuple.Create(-1, -1);
         }
+
+        #region merge one array into another
+        /// <summary>
+        /// Given two sorted arrays such that the first array has space
+        /// at the end to accommodate the second, write a method to merge
+        /// the second into the first and maintain the sort.
+        /// </summary>
+        public static void MergeInPlace(int[] first, int[] second)
+        {
+            if (first.Length == 0) return;
+            int flen = first.Length - 1;
+            int slen = second.Length - 1;
+            int mlen = first.Length + second.Length - 1;
+
+            while (flen >= 0 && slen >= 0)
+            {
+                if (first[flen] >= second[slen])
+                {
+                    first[mlen--] = first[flen--];
+                }
+                else
+                {
+                    first[mlen--] = second[slen--];
+                }
+            }
+
+            // Only check for the second as the first will already be sorted.
+            while (slen >= 0)
+            {
+                first[mlen--] = second[slen--];
+            }
+        }
+        #endregion
+
     }
 }
