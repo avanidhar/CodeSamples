@@ -183,5 +183,36 @@ namespace ConsoleApplication1.LeetCode
 
         }
         #endregion
+
+        /// <summary>
+        /// https://leetcode.com/problems/longest-consecutive-sequence/
+        /// </summary>
+        public static int LongestConsecutive(int[] nums)
+        {
+            if (nums.Length == 0) return 0;
+            HashSet<int> visited = new HashSet<int>();
+            foreach (int val in nums) visited.Add(val);
+            int maxSum = 1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int sum = 1;
+                int val = nums[i];
+                while (visited.Remove(val - 1))
+                {
+                    val--;
+                }
+
+                sum += nums[i] - val;
+
+                val = nums[i];
+                while (visited.Remove(val + 1)) val++;
+
+                sum += val - nums[i];
+
+                maxSum = Math.Max(maxSum, sum);
+            }
+
+            return maxSum;
+        }
     }
 }

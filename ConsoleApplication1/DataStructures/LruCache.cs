@@ -6,38 +6,81 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1.DataStructures
 {
+    public class CacheNode
+    {
+        public int Key { get; set; }
+        public int Value { get; set; }
+        public CacheNode next, previous;
+
+        public CacheNode(int key, int value)
+        {
+            Key = key;
+            Value = value;
+        }
+    }
     public class LruCache
     {
-        public int CACHELEN;
+        private int CACHELEN;
+        public int count;
         LinkedList<int> data;
 
-        Dictionary<int, int> resourceMap;
+        CacheNode head, tail;
+
+        Dictionary<int, CacheNode> resourceMap;
 
         public LruCache(int len)
         {
             this.CACHELEN = len;
             data = new LinkedList<int>();
-            resourceMap = new Dictionary<int, int>();           
+            resourceMap = new Dictionary<int, CacheNode>();
+            count = 0;
+            head = new CacheNode(0,0);
+            tail = new CacheNode(0,0);
+            head.next = tail;
+            tail.previous = head;
         }
 
+        private void AddToHead(CacheNode d)
+        {
+            CacheNode next = head.next;
+            d.next = head.next;
+            head.next.previous = d;
+            d.previous = head;
+            head.next = d;
+        }
+
+        private void deleteNode(CacheNode d)
+        {
+            CacheNode prev = d.previous;
+            prev.next = d.next;
+            d.next.previous = prev;
+        }
         public void Set(int key, int value)
         {
             if (resourceMap.ContainsKey(key))
             {
-                Console.WriteLine("Cache already has item");
-                return;
+                CacheNode d = resourceMap[key];
+                d.Value = value;
+                deleteNode(d);
+                AddToHead(d);
             }
-
-            if((this.data.Count) == CACHELEN)
+            else
             {
-                int valToEject = this.data.Last.Value;
-                this.data.RemoveLast();
+                CacheNode toInsert = new CacheNode(key, value);
+                resourceMap.Add(key, toInsert);
 
-                this.removeFromResourceMap(valToEject);
+                if (count < CACHELEN)
+                {
+                    AddToHead(toInsert);
+                    count++;
+                }
+                else
+                {
+                    resourceMap.Remove(tail.previous.Key);
+                    deleteNode(tail.previous);
+                    AddToHead(toInsert);
+                }
             }
-
-            this.data.AddFirst(value);
-            this.resourceMap.Add(key, value);
         }
 
         public int Get(int key)
@@ -47,19 +90,11 @@ namespace ConsoleApplication1.DataStructures
                 return -1;
             }
 
-            int val = resourceMap[key];
-
-            // Remove the value from wherever it is in the list and move it to the front
-            this.data.Remove(val);
-            this.data.AddFirst(val);
-
-            return val;
-        }
-
-        public void removeFromResourceMap(int value)
-        {
-            var itemToRemove = this.resourceMap.First(kvp => kvp.Value == value);
-            this.resourceMap.Remove(itemToRemove.Key);
+            CacheNode resultNode = resourceMap[key];
+            int result = resultNode.Value;
+            deleteNode(resultNode);
+            AddToHead(resultNode);
+            return result;
         }
     }
 }

@@ -188,15 +188,6 @@ namespace ConsoleApplication1
 
             //Console.WriteLine(Matrices.FindCelebrity(array2D));
 
-            //LruCache cache = new LruCache(5);
-            //cache.Set(1, 1);
-            //cache.Set(2, 2);
-            //cache.Set(3, 3);
-            //cache.Set(4, 4);
-            //cache.Set(5, 5);
-            //cache.Set(6, 6);
-            //cache.Get(3);
-
             // int[,] array2D = new int[,] { { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, {1, 0, 1, 1} };
             //Console.WriteLine(Matrices.FindCelebrity(array2D));
 
@@ -278,12 +269,20 @@ namespace ConsoleApplication1
 
             // Console.WriteLine(result);
 
-            Calculator c = new Calculator();
-            c.KeyPressed('1');
-            c.KeyPressed('2');
-            c.KeyPressed('+');
-            c.KeyPressed('2');
-            c.KeyPressed('=');
+            //Calculator c = new Calculator();
+            //c.KeyPressed('1');
+            //c.KeyPressed('2');
+            //c.KeyPressed('+');
+            //c.KeyPressed('2');
+            //c.KeyPressed('=');
+
+            LruCache cache = new LruCache(1);
+            cache.Set(2, 1);
+            cache.Get(2);
+            cache.Set(3, 2);
+            cache.Get(2);
+            cache.Get(3);
+
             Console.ReadKey(true);
 		}
 	}
