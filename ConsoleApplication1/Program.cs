@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ConsoleApplication1.DataStructures;
 using ConsoleApplication1.HackerRank;
 using ConsoleApplication1.Concepts;
+using static ConsoleApplication1.LeetCode.OverFlow;
 
 namespace ConsoleApplication1
 {
@@ -238,7 +239,7 @@ namespace ConsoleApplication1
             // Recursion.generateIPAddresses("25525511135");
 
             // int[,] nums = new int[,]{ { 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 }, { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 } };
-            int[] nums = new int[] { 1, 2, 3, 4 };
+            // int[] nums = new int[] { 1, 2, 3, 4 };
             // var result = LeetCode.Solutions.TopKFrequent(nums, 2);
             // var result = LeetCode.Solutions.NumberOfArithmeticSlices(nums);
 
@@ -276,12 +277,31 @@ namespace ConsoleApplication1
             //c.KeyPressed('2');
             //c.KeyPressed('=');
 
-            LruCache cache = new LruCache(1);
-            cache.Set(2, 1);
-            cache.Get(2);
-            cache.Set(3, 2);
-            cache.Get(2);
-            cache.Get(3);
+            //LruCache cache = new LruCache(1);
+            //cache.Set(2, 1);
+            //cache.Get(2);
+            //cache.Set(3, 2);
+            //cache.Get(2);
+            //cache.Get(3);
+
+            //RandomListNode one = new RandomListNode(1);
+            //RandomListNode two = new RandomListNode(2);
+            //RandomListNode three = new RandomListNode(3);
+            //one.next = two;
+            //two.next = three;
+            //one.random = three;
+            //two.random = one;
+            //three.random = two;
+            //var result = CopyRandomList(one);
+
+            //var result = LeetCode.OverFlow.Multiply("0", "456");
+            // var result = LeetCode.OverFlow.SimplifyPath("///../../..");
+
+            //var result = LeetCode.OverFlow.FindTheDifference("abcd", "dcabe");
+
+            int[,] nums = new int[,] { {9, 9, 4 }, { 6, 6, 8 }, { 2, 1, 1 }};
+            var result = LeetCode.OverFlow.LongestIncreasingPath(nums);
+            Console.WriteLine(result);
 
             Console.ReadKey(true);
 		}

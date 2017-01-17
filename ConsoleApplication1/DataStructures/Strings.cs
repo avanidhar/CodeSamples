@@ -399,7 +399,9 @@ namespace ConsoleApplication1.DataStructures
                 sb.Append('1');
             }
 
-            return sb.ToString();
+            var chars = sb.ToString().ToCharArray();
+            Array.Reverse(chars);
+            return new string(chars);
         }
 
         public static int longestPalindromicSubstring(string input)

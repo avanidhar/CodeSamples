@@ -214,5 +214,208 @@ namespace ConsoleApplication1.LeetCode
 
             return maxSum;
         }
+
+        // Definition for singly-linked list with a random pointer.
+        public class RandomListNode
+        {
+            public int label;
+            public RandomListNode next, random;
+            public RandomListNode(int x) { this.label = x; }
+        }
+
+        public static RandomListNode CopyRandomList(RandomListNode head)
+        {
+            if (head == null) return null;
+            RandomListNode cur = head;
+            while (cur != null)
+            {
+                RandomListNode n = new RandomListNode(cur.label);
+                n.next = cur.next;
+                cur.next = n;
+                cur = n.next;
+            }
+
+            cur = head;
+            while (cur != null && cur.next != null)
+            {
+                cur.next.random = cur.random == null ? null : cur.random.next;
+                cur = cur.next.next;
+            }
+
+            RandomListNode newHead = head.next;
+            cur = head;
+            var cur2 = newHead;
+
+            while (cur != null && cur2 != null)
+            {
+                cur.next = cur2.next;
+                cur = cur.next;
+
+                cur2.next = cur == null? null : cur.next;
+                cur2 = cur2.next;
+            }
+
+            return newHead;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/multiply-strings/
+        /// </summary>
+        public static string Multiply(string num1, string num2)
+        {
+            if (string.IsNullOrEmpty(num1) || string.IsNullOrEmpty(num2)) return string.Empty;
+
+            int len1 = num1.Length, len2 = num2.Length;
+
+            // Reverse strings to make it easier to multiply
+            num1 = new string(num1.Reverse().ToArray());
+            num2 = new string(num2.Reverse().ToArray());
+
+            int[] output = new int[len1 + len2];
+
+            for (int i = 0; i < len1; i++)
+            {
+                for (int j = 0; j < len2; j++)
+                {
+                    output[i + j] += (num1[i] - '0') * (num2[j] - '0');
+                    output[i + j + 1] += output[i + j] / 10;
+                    output[i + j] = output[i + j] % 10;
+                }
+            }
+
+            int index = len1 + len2 - 1;
+            for (; output[index] == 0 && index > 0; index--) { }
+
+            StringBuilder sb = new StringBuilder();
+
+            for (; index >= 0; index--)
+            {
+                sb.Append(output[index]);
+            }
+
+            return sb.Length == 0? "0" :sb.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string SimplifyPath(string path)
+        {
+            if (string.IsNullOrEmpty(path)) return string.Empty;
+
+            Stack<string> s = new Stack<string>();
+            Stack<string> res = new Stack<string>();
+
+            var splitPaths = path.Split('/').Where(str => !string.IsNullOrEmpty(str));
+
+            foreach (string name in splitPaths)
+            {
+                if (name.Equals(".."))
+                {
+                    if (s.Count != 0)
+                    {
+                        s.Pop();
+                    }
+                }
+                else if(!name.Equals("."))
+                {
+                    s.Push(name);
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            if (s.Count == 0)
+            {
+                sb.Append('/');
+                return sb.ToString();
+            }
+
+            while (s.Count != 0)
+            {
+                res.Push(s.Pop());
+            }
+
+            while (res.Count != 0)
+            {
+                sb.Append("/").Append(res.Pop());
+            }
+            return sb.ToString();
+        }
+
+        public static char FindTheDifference(string s, string t)
+        {
+            if (string.IsNullOrEmpty(s)) return ' ';
+
+            int[] counts = new int[26];
+
+            foreach (char c in s)
+            {
+                counts[c - 'a']++;
+            }
+
+            foreach (char c in t)
+            {
+                counts[c - 'a']--;
+            }
+
+            for (int i = 0; i < 26; i++)
+            {
+                if (counts[i] == -1)
+                {
+                    return Convert.ToChar(i + 'a');
+                }
+            }
+
+            return ' ';
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
+        /// </summary>
+        public static int LongestIncreasingPath(int[,] matrix)
+        {
+            if (matrix.GetLength(0) == 0) return 0;
+
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            int maxLen = 0;
+
+            int[,] cache = new int[rows, cols];
+            bool[,] visited = new bool[rows, cols];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    int maxVal = LongestIncreasingPathHelper(i, j, rows, cols, matrix, cache, visited, Int32.MinValue);
+                    maxLen = Math.Max(maxLen, maxVal);
+                }
+            }
+
+            return maxLen;
+        }
+
+        private static int LongestIncreasingPathHelper(int row, int col, int rows, int cols, int[,] matrix, int[,] cache, bool[,] visited, int previousVal)
+        {
+            if (row < 0 || row >= rows || col < 0 || col >= cols || matrix[row, col] <= previousVal || visited[row, col]) return 0;
+
+            if (cache[row, col] > 0) return cache[row, col];
+
+            int current = matrix[row, col];
+            int tempMax = 0;
+
+            visited[row, col] = true;
+            tempMax = Math.Max(tempMax, 1 + LongestIncreasingPathHelper(row - 1, col, rows, cols, matrix, cache, visited, current));
+            tempMax = Math.Max(tempMax, 1 + LongestIncreasingPathHelper(row + 1, col, rows, cols, matrix, cache, visited, current));
+            tempMax = Math.Max(tempMax, 1 + LongestIncreasingPathHelper(row, col - 1, rows, cols, matrix, cache, visited, current));
+            tempMax = Math.Max(tempMax, 1 + LongestIncreasingPathHelper(row, col + 1, rows, cols, matrix, cache, visited, current));
+            visited[row, col] = false;
+
+            cache[row, col] = tempMax;
+            return tempMax;
+        }
+
+
     }
 }
