@@ -22,7 +22,7 @@ namespace ConsoleApplication1.DataStructures
                     if (input[i, j] == 1 && !traversed[i, j])
                     {
                         count++;
-                        traverseRegion(i, j, input, traversed, rows, columns);
+                        traverseRegionIter(i, j, input, traversed, rows, columns);
                     }
                 }
             }
@@ -44,6 +44,29 @@ namespace ConsoleApplication1.DataStructures
         private static bool isSafe(int[,] input, int i, int j, bool[,] traversed, int rows, int columns)
         {
             return (i >= 0 && i < rows && j >= 0 && j < columns && input[i, j] == 1 && !traversed[i, j]);
+        }
+
+        private static void traverseRegionIter(int row, int col, int[,] input, bool[,] visited, int rows, int columns)
+        {
+            Queue<Tuple<int, int>> q = new Queue<Tuple<int, int>>();
+            q.Enqueue(Tuple.Create(row, col));
+
+            while (!(q.Count == 0))
+            {
+                var element = q.Dequeue();
+                int r = element.Item1;
+                int c = element.Item2;
+
+                visited[r, c] = true;
+                if (input[r, c] == 1)
+                {
+                    if (r > 0 && input[r - 1, c] == 1 && !visited[r - 1, c]) q.Enqueue(Tuple.Create(r - 1, c));
+                    if (r < rows - 1 && input[r + 1, c] == 1 && !visited[r + 1, c]) q.Enqueue(Tuple.Create(r + 1, c));
+                    if (c > 0 && input[r, c - 1] == 1 && !visited[r, c - 1]) q.Enqueue(Tuple.Create(r, c - 1));
+                    if (c < columns - 1 && input[r, c + 1] == 1 && !visited[r, c + 1]) q.Enqueue(Tuple.Create(r, c + 1));
+                }
+
+            }
         }
         #endregion
 
@@ -114,6 +137,58 @@ namespace ConsoleApplication1.DataStructures
 
             return result;
         }
+        #endregion
+
+        #region size of smallest region
+        public static int SizeOfSmallestRegion(int[,] input)
+        {
+            int rows = input.GetLength(0);
+            int columns = input.GetLength(1);
+            int count = Int32.MaxValue;
+            bool[,] traversed = new bool[rows, columns];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (input[i, j] == 1 && !traversed[i, j])
+                    {
+                       count = Math.Min(count, smallestRegionHelper(i, j, input, traversed, rows, columns));
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        public static int smallestRegionHelper(int row, int col, int[,] input, bool[,] visited, int rows, int cols)
+        {
+            int count = 0;
+            Queue<Tuple<int, int>> q = new Queue<Tuple<int, int>>();
+            q.Enqueue(Tuple.Create(row, col));
+
+            while (!(q.Count == 0))
+            {
+                var element = q.Dequeue();
+                int r = element.Item1;
+                int c = element.Item2;
+
+                visited[r, c] = true;
+                if(input[r,c] == 1)
+                {
+                    count++;
+                    if (r > 0 && input[r - 1, c] == 1 && !visited[r - 1, c]) q.Enqueue(Tuple.Create(r - 1, c));
+                    if (r < rows - 1 && input[r + 1, c] == 1 && !visited[r + 1, c]) q.Enqueue(Tuple.Create(r + 1, c));
+                    if (c > 0 && input[r, c -1] == 1 && !visited[r, c-1]) q.Enqueue(Tuple.Create(r, c - 1));
+                    if (c <cols -1 && input[r, c + 1] == 1 && !visited[r, c + 1]) q.Enqueue(Tuple.Create(r, c + 1));
+                }
+
+            }
+
+            return count;
+        }
+        #endregion
+
+        #region game of go
         #endregion
     }
 }

@@ -416,6 +416,77 @@ namespace ConsoleApplication1.LeetCode
             return tempMax;
         }
 
+        public static bool CanStringBePalindrome(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return false;
+            int unpairedCount = 0;
+
+            Dictionary<char, int> occurrences = new Dictionary<char, int>();
+            foreach (char c in s)
+            {
+                if (occurrences.ContainsKey(c))
+                {
+                    occurrences[c] = occurrences[c] + 1;
+                }
+                else
+                {
+                    occurrences.Add(c, 1);
+                }
+            }
+
+            foreach (var value in occurrences.Values)
+            {
+                if ((value & 1) != 0)
+                {
+                    if (unpairedCount == 1) return false;
+                    unpairedCount++;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool IsNumber(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return false;
+            int decimalCount = 0;
+            bool numberBefore = false;
+            string res = s.Trim();
+            res = res[0] == '-' ? res.Substring(1) : res;
+
+            foreach (char c in res)
+            {
+                if (c == '.')
+                {
+                    decimalCount++;
+                    if (decimalCount > 1) return false;
+                }
+                else if (isValidNumChar(c))
+                {
+                    if (!numberBefore) return false;
+                }
+                else if (isValidNum(c))
+                {
+                    numberBefore = true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool isValidNum(char c)
+        {
+            return ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'));
+        }
+
+        private static bool isValidNumChar(char c)
+        {
+            return ((c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'));
+        }
 
     }
 }

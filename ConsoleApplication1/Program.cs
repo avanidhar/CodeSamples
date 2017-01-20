@@ -227,7 +227,9 @@ namespace ConsoleApplication1
 
             // arr = Integers.IncrementNumber(arr);
 
-            // int[,] maze = new int[,] { { 1, 0, 1, 1 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 0 }, { 1, 0, 0, 1 } };
+            int[,] maze = new int[,] { { 1, 0, 1, 1 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 0 }, { 1, 0, 0, 1 } };
+            // var result = Graphs.SizeOfSmallestRegion(maze);
+            var result = Graphs.NumberOfRegions(maze);
             // int regions = Codelab.Codelab.NumberOfRegions(maze);
             // Console.WriteLine(regions);
 
@@ -299,8 +301,10 @@ namespace ConsoleApplication1
 
             //var result = LeetCode.OverFlow.FindTheDifference("abcd", "dcabe");
 
-            int[,] nums = new int[,] { {9, 9, 4 }, { 6, 6, 8 }, { 2, 1, 1 }};
-            var result = LeetCode.OverFlow.LongestIncreasingPath(nums);
+            //int[,] nums = new int[,] { {9, 9, 4 }, { 6, 6, 8 }, { 2, 1, 1 }};
+            //var result = LeetCode.OverFlow.LongestIncreasingPath(nums);
+
+            //var result = LeetCode.OverFlow.IsNumber("ef2");
             Console.WriteLine(result);
 
             Console.ReadKey(true);
