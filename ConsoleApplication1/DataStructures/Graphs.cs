@@ -189,6 +189,131 @@ namespace ConsoleApplication1.DataStructures
         #endregion
 
         #region game of go
+        public static int scoreGameOfGo(char[,] board, char player)
+        {
+            if(board.GetLength(0) == 0) return 0;
+
+            int rows = board.GetLength(0);
+            int cols = board.GetLength(1);
+            bool[,] visited = new bool[rows, cols];
+            int count = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (board[i, j] == ' ' && !visited[i, j])
+                    {
+                        count += scoreGameHelper(i, j, rows, cols, board, visited, player);
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        private static int scoreGameHelper(int row, int col, int rows, int cols, char[,] input, bool[,] visited, char player)
+        {
+            int count = 0;
+            Queue<Tuple<int, int>> q = new Queue<Tuple<int, int>>();
+
+            q.Enqueue(Tuple.Create(row, col));
+
+            while (!(q.Count == 0))
+            {
+                var val = q.Dequeue();
+                int r = val.Item1;
+                int c = val.Item2;
+
+                visited[r, c] = true;
+                if (input[r, c] == ' ')
+                {
+                    count++;
+                    if (r > 0 && !visited[r - 1, c]) q.Enqueue(Tuple.Create(r - 1, c));
+                    if (r < rows - 1 && !visited[r + 1, c]) q.Enqueue(Tuple.Create(r + 1, c));
+                    if (c > 0 && !visited[r, c - 1]) q.Enqueue(Tuple.Create(r, c - 1));
+                    if (c < cols - 1 && !visited[r, c + 1]) q.Enqueue(Tuple.Create(r, c + 1));
+                }
+                else if (input[r, c] != player)
+                {
+                    return 0;
+                }
+            }
+
+            return count;
+        }
+        #endregion
+
+        #region GuardsToGates
+        public static void updateDistances(int[,] layout)
+        {
+            if (layout.GetLength(0) == 0) return;
+
+            int rows = layout.GetLength(0);
+            int cols = layout.GetLength(1);
+
+            Queue<Tuple<int, int, int>> q = new Queue<Tuple<int, int, int>>();
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (layout[i, j] == -1)
+                    {
+                        q.Enqueue(Tuple.Create(i, j, 0));
+                    }
+                }
+            }
+
+            while (!(q.Count == 0))
+            {
+                var val = q.Dequeue();
+                int r = val.Item1;
+                int c = val.Item2;
+                int dist = val.Item3;
+
+                if (isSafeToGo(r - 1, c, rows, cols, layout))
+                {
+                    if (layout[r - 1, c] == 0 || layout[r - 1, c] > dist + 1)
+                    {
+                        layout[r - 1, c] = dist + 1;
+                        q.Enqueue(Tuple.Create(r - 1, c, dist + 1));
+                    }
+                }
+
+                if (isSafeToGo(r + 1, c, rows, cols, layout))
+                {
+                    if (layout[r + 1, c] == 0 || layout[r + 1, c] > dist + 1)
+                    {
+                        layout[r + 1, c] = dist + 1;
+                        q.Enqueue(Tuple.Create(r + 1, c, dist + 1));
+                    }
+                }
+
+                if (isSafeToGo(r, c-1, rows, cols, layout))
+                {
+                    if (layout[r, c - 1] == 0 || layout[r, c - 1] > dist + 1)
+                    {
+                        layout[r, c - 1] = dist + 1;
+                        q.Enqueue(Tuple.Create(r, c - 1, dist + 1));
+                    }
+                }
+
+                if (isSafeToGo(r, c + 1, rows, cols, layout))
+                {
+                    if (layout[r, c + 1] == 0 || layout[r, c + 1] > dist + 1)
+                    {
+                        layout[r, c + 1] = dist + 1;
+                        q.Enqueue(Tuple.Create(r, c + 1, dist + 1));
+                    }
+                }
+            }
+        }
+
+        private static bool isSafeToGo(int r, int c, int rows, int cols, int[,] layout)
+        {
+            return (r >= 0 && r < rows && c >= 0 && c < cols && layout[r, c] != -1 && layout[r, c] != -2);
+        }
         #endregion
     }
 }

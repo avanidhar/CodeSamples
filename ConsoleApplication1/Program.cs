@@ -227,9 +227,9 @@ namespace ConsoleApplication1
 
             // arr = Integers.IncrementNumber(arr);
 
-            int[,] maze = new int[,] { { 1, 0, 1, 1 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 0 }, { 1, 0, 0, 1 } };
+            // int[,] maze = new int[,] { { 1, 0, 1, 1 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 0 }, { 1, 0, 0, 1 } };
             // var result = Graphs.SizeOfSmallestRegion(maze);
-            var result = Graphs.NumberOfRegions(maze);
+            // var result = Graphs.NumberOfRegions(maze);
             // int regions = Codelab.Codelab.NumberOfRegions(maze);
             // Console.WriteLine(regions);
 
@@ -305,7 +305,20 @@ namespace ConsoleApplication1
             //var result = LeetCode.OverFlow.LongestIncreasingPath(nums);
 
             //var result = LeetCode.OverFlow.IsNumber("ef2");
-            Console.WriteLine(result);
+            //char[,] gameboard = new char[,] { { 'w', 'b', 'b' }, { ' ', 'b', ' ' }, { 'w', 'b', ' ' }, { 'w', 'b', ' ' } };
+            //var result = Graphs.scoreGameOfGo(gameboard, 'b');
+
+            int[,] museum = new int[,] { {0,0,0 }, {-2, -1, -1 }, {-2, 0, 0 } };
+            Graphs.updateDistances(museum);
+            for (int i = 0; i < museum.GetLength(0); i++)
+            {
+                for(int j =0;j<museum.GetLength(1); j++)
+                {
+                    Console.Write(museum[i, j]);
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
 
             Console.ReadKey(true);
 		}
