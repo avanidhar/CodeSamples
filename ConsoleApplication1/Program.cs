@@ -8,6 +8,7 @@ using ConsoleApplication1.DataStructures;
 using ConsoleApplication1.HackerRank;
 using ConsoleApplication1.Concepts;
 using static ConsoleApplication1.LeetCode.OverFlow;
+using System.Threading;
 
 namespace ConsoleApplication1
 {
@@ -308,18 +309,23 @@ namespace ConsoleApplication1
             //char[,] gameboard = new char[,] { { 'w', 'b', 'b' }, { ' ', 'b', ' ' }, { 'w', 'b', ' ' }, { 'w', 'b', ' ' } };
             //var result = Graphs.scoreGameOfGo(gameboard, 'b');
 
-            int[,] museum = new int[,] { {0,0,0 }, {-2, -1, -1 }, {-2, 0, 0 } };
-            Graphs.updateDistances(museum);
-            for (int i = 0; i < museum.GetLength(0); i++)
-            {
-                for(int j =0;j<museum.GetLength(1); j++)
-                {
-                    Console.Write(museum[i, j]);
-                    Console.Write(" ");
-                }
-                Console.WriteLine();
-            }
+            //int[,] museum = new int[,] { {0,0,0 }, {-2, -1, -1 }, {-2, 0, 0 } };
+            //Graphs.updateDistances(museum);
+            //for (int i = 0; i < museum.GetLength(0); i++)
+            //{
+            //    for(int j =0;j<museum.GetLength(1); j++)
+            //    {
+            //        Console.Write(museum[i, j]);
+            //        Console.Write(" ");
+            //    }
+            //    Console.WriteLine();
+            //}
 
+            ReaderWriterProblem rw = new ReaderWriterProblem();
+            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("hello"));
+            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("world"));
+            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("microsoft"));
+            for (int i = 0; i< 5; i++) ThreadPool.QueueUserWorkItem((p) => rw.ReadWithWritePriority());
             Console.ReadKey(true);
 		}
 	}

@@ -49,6 +49,7 @@
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BitManipulation.cs" />
     <Compile Include="DataStructures\Graphs.cs" />
+    <Compile Include="DataStructures\HitCounter.cs" />
     <Compile Include="DataStructures\LruCache.cs" />
     <Compile Include="DataStructures\MovingAverageWindow.cs" />
     <Compile Include="DataStructures\Recursion.cs" />
