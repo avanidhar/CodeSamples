@@ -26,7 +26,7 @@ namespace ConsoleApplication1.Concepts
             // use any arbitrary unsigned int too.
             // Just make sure you are checking that the counter does not
             // exceed the max value
-            if (this.m_Counter == Int32.MaxValue)
+            if (this.m_Counter == UInt32.MaxValue)
             {
                 return idQueue.Dequeue();
             }

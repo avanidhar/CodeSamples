@@ -321,11 +321,19 @@ namespace ConsoleApplication1
             //    Console.WriteLine();
             //}
 
-            ReaderWriterProblem rw = new ReaderWriterProblem();
-            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("hello"));
-            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("world"));
-            ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("microsoft"));
-            for (int i = 0; i< 5; i++) ThreadPool.QueueUserWorkItem((p) => rw.ReadWithWritePriority());
+            //ReaderWriterProblem rw = new ReaderWriterProblem();
+            //ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("hello"));
+            //ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("world"));
+            //ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("microsoft"));
+            //for (int i = 0; i< 5; i++) ThreadPool.QueueUserWorkItem((p) => rw.ReadWithWritePriority());
+
+            ProducerConsumer pc = new ProducerConsumer();
+            ThreadPool.QueueUserWorkItem((o) => pc.Produce(1));
+            ThreadPool.QueueUserWorkItem((o) => pc.Produce(2));
+            ThreadPool.QueueUserWorkItem((o) => pc.Produce(3));
+            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
             Console.ReadKey(true);
 		}
 	}
