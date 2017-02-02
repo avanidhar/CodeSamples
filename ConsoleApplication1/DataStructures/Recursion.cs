@@ -153,5 +153,36 @@ namespace ConsoleApplication1.DataStructures
             }
         }
         #endregion
+
+        #region list all subsets
+        public static List<List<int>> subsets(int[] input)
+        {
+            return subsetsHelper(input, 0);
+        }
+
+        private static List<List<int>> subsetsHelper(int[] input, int index)
+        {
+            List<List<int>> result = new List<List<int>>();
+            if (index == input.Length)
+            {
+                result.Add(new List<int>());
+                return result;
+            }
+
+            int val = input[index];
+
+            result = subsetsHelper(input, index + 1);
+            List<List<int>> more = new List<List<int>>();
+            foreach (var entry in result)
+            {
+                List<int> newEntry = new List<int>();
+                newEntry.AddRange(new List<int>(entry));
+                newEntry.Add(val);
+                more.Add(new List<int>(newEntry));
+            }
+            result.AddRange(more);
+            return result;
+        }
+        #endregion
     }
 }

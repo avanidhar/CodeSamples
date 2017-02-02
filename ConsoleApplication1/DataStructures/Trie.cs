@@ -103,5 +103,47 @@ namespace ConsoleApplication1.DataStructures
 
 			return true;
 		}
+
+        /// <summary>
+        /// Searches for a word in the trie under the following req
+        /// .. if the word is a regular word, nothing changes 
+        /// .. if the word has a '.' then we match any character.
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        public bool SearchWord(string word)
+        {
+            return SearchWordHelper(word, this.root);
+        }
+
+        private bool SearchWordHelper(string word, TrieNode node)
+        {
+            if (string.IsNullOrEmpty(word)) return false;
+
+            TrieNode cur = node;
+            var children = cur.children;
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] == '.')
+                {
+                    string newWord = word.Substring(i+1);
+                    foreach (var child in children.Values)
+                    {
+                        if (SearchWordHelper(newWord, child)) return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    if (!children.ContainsKey(word[i])) return false;
+
+                    cur = children[word[i]];
+                    children = cur.children;
+                }
+            }
+
+            return cur.terminates;
+        }
 	}
 }

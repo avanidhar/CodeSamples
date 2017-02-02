@@ -327,13 +327,23 @@ namespace ConsoleApplication1
             //ThreadPool.QueueUserWorkItem((o) => rw.WriteWithWriterPriority("microsoft"));
             //for (int i = 0; i< 5; i++) ThreadPool.QueueUserWorkItem((p) => rw.ReadWithWritePriority());
 
-            ProducerConsumer pc = new ProducerConsumer();
-            ThreadPool.QueueUserWorkItem((o) => pc.Produce(1));
-            ThreadPool.QueueUserWorkItem((o) => pc.Produce(2));
-            ThreadPool.QueueUserWorkItem((o) => pc.Produce(3));
-            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
-            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
-            ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+            //ProducerConsumer pc = new ProducerConsumer();
+            //ThreadPool.QueueUserWorkItem((o) => pc.Produce(1));
+            //ThreadPool.QueueUserWorkItem((o) => pc.Produce(2));
+            //ThreadPool.QueueUserWorkItem((o) => pc.Produce(3));
+            //ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+            //ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+            //ThreadPool.QueueUserWorkItem((o) => pc.Consume());
+
+            //int[] i = new int[] { 1, 2, 3};
+            //var result = Recursion.subsets(i);
+
+            Trie t = new Trie("cat");
+            t.AddWord("bat");
+            t.AddWord("ball");
+            t.AddWord("cot");
+            var result = t.SearchWord("c..t");
+            Console.WriteLine(result);
             Console.ReadKey(true);
 		}
 	}
