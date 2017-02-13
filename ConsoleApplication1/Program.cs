@@ -338,12 +338,18 @@ namespace ConsoleApplication1
             //int[] i = new int[] { 1, 2, 3};
             //var result = Recursion.subsets(i);
 
-            Trie t = new Trie("cat");
-            t.AddWord("bat");
-            t.AddWord("ball");
-            t.AddWord("cot");
-            var result = t.SearchWord("c..t");
+            //Trie t = new Trie("cat");
+            //t.AddWord("bat");
+            //t.AddWord("ball");
+            //t.AddWord("cot");
+            //var result = t.SearchWord("c..t");
+            //Console.WriteLine(result);
+
+            string s = "abx";
+            string t = "ahbgdc";
+            var result = LeetCode.OverFlow.IsSubsequence(s, t);
             Console.WriteLine(result);
+
             Console.ReadKey(true);
 		}
 	}

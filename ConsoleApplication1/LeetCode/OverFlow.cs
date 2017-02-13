@@ -488,5 +488,31 @@ namespace ConsoleApplication1.LeetCode
             return ((c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'));
         }
 
+
+        /// <summary>
+        /// https://leetcode.com/problems/is-subsequence/?tab=Description
+        /// This can be solved using dynamic programming, but that is not 
+        /// really needed and is also memory overkill. We can just use two pointers and increment the
+        /// s pointer when a character match happens in t and s. If we have not 
+        /// gone through s when the t loop is done, return false. Else true.
+        /// </summary>
+        public static bool IsSubsequence(string s, string t)
+        {
+            if (string.IsNullOrEmpty(t)) { return string.IsNullOrEmpty(s); }
+            if (string.IsNullOrEmpty(s)) return true;
+            int slen = s.Length;
+            int tlen = t.Length;
+            int sIter = 0;
+            for (int i = 0; i < tlen; i++)
+            {
+                if (t[i] == s[sIter])
+                {
+                    sIter++;
+                }
+
+                if (sIter == slen) return true;
+            }
+            return false;
+        }
     }
 }
